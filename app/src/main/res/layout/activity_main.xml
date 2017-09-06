@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:weightSum="1"
+    tools:context="com.mudeomundo.aplicativo.mudeomundo.MainActivity">
+
+    <Button
+        android:id="@+id/buttonOngId"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:elevation="1dp"
+        android:text="ONG"
+        android:layout_alignBaseline="@+id/buttonAçãoVoluntariaId"
+        android:layout_alignBottom="@+id/buttonAçãoVoluntariaId"
+        android:layout_toLeftOf="@+id/buttonAçãoVoluntariaId"
+        android:layout_toStartOf="@+id/buttonAçãoVoluntariaId" />
+
+    <Button
+        android:id="@+id/buttonAçãoVoluntariaId"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="209dp"
+        android:layout_weight="1"
+        android:text="Ação Voluntária"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <ImageView
+        android:id="@+id/imagemLogoId"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="49dp"
+        android:background="@drawable/novologo"
+        android:cropToPadding="false"
+        android:layout_above="@+id/buttonOngId"
+        android:layout_alignLeft="@+id/buttonOngId"
+        android:layout_alignStart="@+id/buttonOngId"
+        android:layout_alignRight="@+id/buttonAçãoVoluntariaId"
+        android:layout_alignEnd="@+id/buttonAçãoVoluntariaId" />
+
+    <TextView
+        android:id="@+id/textViewNaoECadastradoId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="12dp"
+        android:elevation="1dp"
+        android:onClick="abrirCadastroUsuario"
+        android:padding="50dp"
+        android:text="Não é cadastrado ainda? Cadastre-se" />
+
+    <Button
+        android:id="@+id/botaoLoginId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonOngId"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="53dp"
+        android:text="Login" />
+
+</RelativeLayout>

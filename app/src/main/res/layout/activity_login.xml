@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.mudeomundo.aplicativo.mudeomundo.LoginActivity">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="258dp"
+        android:layout_height="133dp"
+        app:srcCompat="@mipmap/icone"
+        tools:layout_editor_absoluteX="74dp"
+        tools:layout_editor_absoluteY="26dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp" />
+
+    <TextView
+        android:id="@+id/textViewUsuarioId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Usuário:"
+        android:textSize="24sp"
+        tools:layout_editor_absoluteX="50dp"
+        tools:layout_editor_absoluteY="241dp"
+        android:layout_alignTop="@+id/editTextNomeId"
+        android:layout_alignLeft="@+id/textViewPasswordId"
+        android:layout_alignStart="@+id/textViewPasswordId" />
+
+    <TextView
+        android:id="@+id/textViewPasswordId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Senha:"
+        android:textSize="24sp"
+        tools:layout_editor_absoluteX="50dp"
+        tools:layout_editor_absoluteY="330dp"
+        android:layout_alignBaseline="@+id/editTextPasswordId"
+        android:layout_alignBottom="@+id/editTextPasswordId"
+        android:layout_toLeftOf="@+id/buttonLogarId"
+        android:layout_toStartOf="@+id/buttonLogarId" />
+
+    <EditText
+        android:id="@+id/editTextNomeId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName|textVisiblePassword"
+        tools:layout_editor_absoluteX="136dp"
+        tools:layout_editor_absoluteY="234dp"
+        android:layout_below="@+id/imageView"
+        android:layout_alignLeft="@+id/editTextPasswordId"
+        android:layout_alignStart="@+id/editTextPasswordId"
+        android:layout_marginTop="49dp" />
+
+    <EditText
+        android:id="@+id/editTextPasswordId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPassword"
+        tools:layout_editor_absoluteX="136dp"
+        tools:layout_editor_absoluteY="316dp"
+        android:layout_marginRight="22dp"
+        android:layout_marginEnd="22dp"
+        android:layout_below="@+id/editTextNomeId"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="37dp" />
+
+    <Button
+        android:id="@+id/buttonLogarId"
+        android:layout_width="149dp"
+        android:layout_height="53dp"
+        android:text="Logar"
+        tools:layout_editor_absoluteX="118dp"
+        tools:layout_editor_absoluteY="418dp"
+        android:layout_below="@+id/editTextPasswordId"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="54dp" />
+</RelativeLayout>

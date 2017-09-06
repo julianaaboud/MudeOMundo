@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">MudeOMundo</string>
+
+    <string name="estados">Escolha um Estado</string>
+
+    <string-array name="estados">
+        <item>São Paulo</item>
+        <item>Rio de Janeiro</item>
+        <item>Espírito Santo</item>
+
+    </string-array>
+
+</resources>
