@@ -1,5 +1,6 @@
 package com.mudeomundo.aplicativo.mudeomundo;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -54,7 +55,12 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
+
+
                     Toast.makeText(LoginActivity.this, "Sucesso ao fazer login ", Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(LoginActivity.this, UsuarioLogado.class);
+                    startActivity(intent);
+
                 } else {
                     Log.i("loginfail", "erro" + task.getException());
                     Toast.makeText(LoginActivity.this, "Erro ao fazer login ", Toast.LENGTH_LONG).show();

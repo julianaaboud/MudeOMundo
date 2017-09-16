@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.TextInputLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context="com.mudeomundo.aplicativo.mudeomundo.model.BuscaOngActivity">
+
+    <Button
+        android:id="@+id/botaoBuscaNomeId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/botaoBuscaLocalizacaoAtual"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_vertical"
+        android:layout_marginBottom="78dp"
+        android:text="Buscar"
+        android:textAlignment="center"
+        tools:layout_editor_absoluteX="147dp"
+        tools:layout_editor_absoluteY="118dp" />
+
+
+    <EditText
+        android:id="@+id/editTextBuscaOngNomeId"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/botaoBuscaNomeId"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_vertical"
+        android:layout_marginBottom="19dp"
+        android:ems="10"
+        android:hint="Digite o nome da ONG:"
+        android:inputType="textPersonName"
+        tools:layout_editor_absoluteX="98dp"
+        tools:layout_editor_absoluteY="55dp" />
+
+    <Button
+        android:id="@+id/botaoBuscaLocalizacaoAtual"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/botaoOutraLocalizacao"
+        android:layout_alignLeft="@+id/botaoOutraLocalizacao"
+        android:layout_alignStart="@+id/botaoOutraLocalizacao"
+        android:layout_gravity="center_vertical"
+        android:layout_marginBottom="26dp"
+        android:gravity="center_vertical"
+        android:text="Buscar pela minha localização"
+        android:textAlignment="center"
+        tools:layout_editor_absoluteX="76dp"
+        tools:layout_editor_absoluteY="246dp" />
+
+    <Button
+        android:id="@+id/botaoOutraLocalizacao"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="133dp"
+        android:gravity="center_vertical|center"
+        android:text="Buscar por outra localização"
+        android:textAlignment="center"
+        tools:layout_editor_absoluteX="76dp"
+        tools:layout_editor_absoluteY="334dp" />
+
+
+</android.support.design.widget.TextInputLayout>

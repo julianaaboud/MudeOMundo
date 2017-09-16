@@ -8,11 +8,13 @@ import android.widget.Button;
 
 import com.google.firebase.database.DatabaseReference;
 import com.mudeomundo.aplicativo.mudeomundo.config.ConfiguracaoFirebase;
+import com.mudeomundo.aplicativo.mudeomundo.model.BuscaOngActivity;
 
 public class MainActivity extends AppCompatActivity {
 
     private Button botaoLogin;
     private DatabaseReference referenciaFirebase;
+    private Button botaoOng;
 
 
     @Override
@@ -31,6 +33,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        botaoOng = (Button) findViewById(R.id.buttonOngId);
+        botaoOng.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, BuscaOngActivity.class));
+            }
+        });
 
     }
     public void abrirCadastroUsuario(View view) {
