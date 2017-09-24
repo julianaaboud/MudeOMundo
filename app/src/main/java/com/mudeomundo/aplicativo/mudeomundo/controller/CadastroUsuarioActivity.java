@@ -5,9 +5,9 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -33,7 +33,7 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
     private EditText senha;
     private RadioButton sexofem;
     private RadioButton sexomasc;
-    private Button botaoCadastrar;
+    private TextView botaoCadastrar;
     private Usuario usuario;
 
     private FirebaseAuth autenticacao;
@@ -43,17 +43,17 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_usuario);
 
-        nome = (EditText) findViewById(R.id.editTextNomeId);
-        dt_nasc = (EditText) findViewById(R.id.editTextDtNascId);
-        cep = (EditText) findViewById(R.id.editTextCepId);
-        cidade = (EditText) findViewById(R.id.editTextCidadeId);
-        estado = (EditText) findViewById(R.id.editTextEstadoId);
-        telefone = (EditText) findViewById(R.id.editTextTelefoneId);
-        email = (EditText) findViewById(R.id.editTextEmailId);
-        senha = (EditText) findViewById(R.id.editTextSenhaId);
-        sexofem = (RadioButton) findViewById(R.id.radioButtonFemId);
-        sexomasc = (RadioButton) findViewById(R.id.radioButtonMascId);
-        botaoCadastrar = (Button) findViewById(R.id.buttonCadastrarId);
+        nome = (EditText) findViewById(R.id.nomeId);
+        dt_nasc = (EditText) findViewById(R.id.dtNascId);
+        cep = (EditText) findViewById(R.id.cepId);
+        cidade = (EditText) findViewById(R.id.cidadeId);
+        estado = (EditText) findViewById(R.id.estadoId);
+        telefone = (EditText) findViewById(R.id.telefoneId);
+        email = (EditText) findViewById(R.id.emailId);
+        senha = (EditText) findViewById(R.id.senhaId);
+        sexofem = (RadioButton) findViewById(R.id.femId);
+        sexomasc = (RadioButton) findViewById(R.id.mascId);
+        botaoCadastrar = (TextView) findViewById(R.id.cadastrarId);
 
         botaoCadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
