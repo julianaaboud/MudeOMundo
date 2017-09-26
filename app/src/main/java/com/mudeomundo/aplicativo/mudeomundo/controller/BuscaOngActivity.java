@@ -1,4 +1,4 @@
-package com.mudeomundo.aplicativo.mudeomundo.model;
+package com.mudeomundo.aplicativo.mudeomundo.controller;
 
 import android.content.Intent;
 import android.os.Bundle;

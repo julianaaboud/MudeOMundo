@@ -16,21 +16,21 @@
         android:roundIcon="@mipmap/icone"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".controller.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".CadastroUsuarioActivity" />
+        <activity android:name=".controller.LoginActivity" />
+        <activity android:name=".controller.CadastroUsuarioActivity" />
         <activity android:name=".MainActivityLogado" />
         <activity
-            android:name=".UsuarioLogado"
+            android:name=".controller.UsuarioLogado"
             android:label="@string/title_activity_usuario_logado"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".model.BuscaOngActivity" />
+        <activity android:name=".controller.BuscaOngActivity" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -44,7 +44,7 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".model.MapsActivity"
+            android:name=".controller.MapsActivity"
             android:label="@string/title_activity_maps"></activity>
 
 

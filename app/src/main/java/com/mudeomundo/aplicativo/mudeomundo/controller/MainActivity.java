@@ -1,4 +1,4 @@
-package com.mudeomundo.aplicativo.mudeomundo;
+package com.mudeomundo.aplicativo.mudeomundo.controller;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,8 +7,8 @@ import android.view.View;
 import android.widget.Button;
 
 import com.google.firebase.database.DatabaseReference;
+import com.mudeomundo.aplicativo.mudeomundo.R;
 import com.mudeomundo.aplicativo.mudeomundo.config.ConfiguracaoFirebase;
-import com.mudeomundo.aplicativo.mudeomundo.model.BuscaOngActivity;
 
 public class MainActivity extends AppCompatActivity {
 

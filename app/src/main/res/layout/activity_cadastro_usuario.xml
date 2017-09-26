@@ -21,8 +21,10 @@
                 android:layout_height="wrap_content">
 
                 <EditText
+                    android:id="@+id/nomeId"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="text"
                     android:hint="Nome: " />
 
             </android.support.design.widget.TextInputLayout>
@@ -32,8 +34,10 @@
                 android:layout_height="wrap_content">
 
                 <EditText
+                    android:id="@+id/dtNascId"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="date"
                     android:hint="Nascimento: " />
 
             </android.support.design.widget.TextInputLayout>
@@ -43,8 +47,11 @@
                 android:layout_height="wrap_content">
 
                 <EditText
+                    android:id="@+id/cepId"
+
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="number"
                     android:hint="CEP: " />
 
             </android.support.design.widget.TextInputLayout>
@@ -54,8 +61,10 @@
                 android:layout_height="wrap_content">
 
                 <EditText
+                    android:id="@+id/cidadeId"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="text"
                     android:hint="Cidade: " />
 
             </android.support.design.widget.TextInputLayout>
@@ -65,8 +74,10 @@
                 android:layout_height="wrap_content">
 
                 <EditText
+                    android:id="@+id/estadoId"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="text"
                     android:hint="Estado: " />
 
             </android.support.design.widget.TextInputLayout>
@@ -76,8 +87,10 @@
                 android:layout_height="wrap_content">
 
                 <EditText
+                    android:id="@+id/telefoneId"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="number"
                     android:hint="Telefone: " />
 
             </android.support.design.widget.TextInputLayout>
@@ -103,19 +116,22 @@
                     android:orientation="horizontal">
 
                     <RadioButton
+                        android:id="@+id/femId"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="feminino" />
+                        android:text="Feminino" />
 
                     <RadioButton
+                        android:id="@+id/mascId"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="masculino" />
+                        android:text="Masculino" />
 
                     <RadioButton
+                        android:id="@+id/outroId"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="outro" />
+                        android:text="Outro" />
 
                 </RadioGroup>
 
@@ -126,8 +142,10 @@
                 android:layout_height="wrap_content">
 
                 <EditText
+                    android:id="@+id/emailId"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
                     android:hint="E-mail: " />
 
             </android.support.design.widget.TextInputLayout>
@@ -137,22 +155,25 @@
                 android:layout_height="wrap_content">
 
                 <EditText
+                    android:id="@+id/senhaId"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="textPassword"
                     android:hint="Senha: " />
 
             </android.support.design.widget.TextInputLayout>
 
 
             <TextView
+                android:id="@+id/cadastrarId"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="20dp"
                 android:background="@drawable/button_shape"
+                android:layout_marginTop="20dp"
                 android:gravity="center"
                 android:padding="12dp"
                 android:text="Cadastrar"
-                android:textColor="@color/primaryText"
+                android:textColor="@color/colorPrimary"
                 android:textSize="21sp" />
 
         </LinearLayout>

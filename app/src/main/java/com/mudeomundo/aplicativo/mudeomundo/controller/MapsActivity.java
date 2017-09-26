@@ -1,4 +1,4 @@
-package com.mudeomundo.aplicativo.mudeomundo.model;
+package com.mudeomundo.aplicativo.mudeomundo.controller;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;

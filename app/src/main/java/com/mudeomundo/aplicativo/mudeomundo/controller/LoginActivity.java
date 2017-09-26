@@ -1,4 +1,4 @@
-package com.mudeomundo.aplicativo.mudeomundo;
+package com.mudeomundo.aplicativo.mudeomundo.controller;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +14,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.mudeomundo.aplicativo.mudeomundo.R;
 import com.mudeomundo.aplicativo.mudeomundo.config.ConfiguracaoFirebase;
 import com.mudeomundo.aplicativo.mudeomundo.model.Usuario;
 
@@ -55,9 +56,6 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
-
-
-                    Toast.makeText(LoginActivity.this, "Sucesso ao fazer login ", Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(LoginActivity.this, UsuarioLogado.class);
                     startActivity(intent);
 

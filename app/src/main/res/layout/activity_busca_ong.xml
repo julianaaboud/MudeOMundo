@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context="com.mudeomundo.aplicativo.mudeomundo.model.BuscaOngActivity">
+    tools:context="com.mudeomundo.aplicativo.mudeomundo.controller.BuscaOngActivity">
 
     <Button
         android:id="@+id/botaoBuscaNomeId"
@@ -48,19 +48,6 @@
         android:textAlignment="center"
         tools:layout_editor_absoluteX="76dp"
         tools:layout_editor_absoluteY="246dp" />
-
-    <Button
-        android:id="@+id/botaoOutraLocalizacao"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="133dp"
-        android:gravity="center_vertical|center"
-        android:text="Buscar por outra localização"
-        android:textAlignment="center"
-        tools:layout_editor_absoluteX="76dp"
-        tools:layout_editor_absoluteY="334dp" />
 
 
 </android.support.design.widget.TextInputLayout>

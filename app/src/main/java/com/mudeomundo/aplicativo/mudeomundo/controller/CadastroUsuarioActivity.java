@@ -1,4 +1,4 @@
-package com.mudeomundo.aplicativo.mudeomundo;
+package com.mudeomundo.aplicativo.mudeomundo.controller;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -18,6 +18,7 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.auth.FirebaseUser;
+import com.mudeomundo.aplicativo.mudeomundo.R;
 import com.mudeomundo.aplicativo.mudeomundo.config.ConfiguracaoFirebase;
 import com.mudeomundo.aplicativo.mudeomundo.model.Usuario;
 
