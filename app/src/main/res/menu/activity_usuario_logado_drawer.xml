@@ -13,11 +13,11 @@
         <item
             android:id="@+id/nav_inserir"
             android:icon="@drawable/charity"
-            android:title="Inserir ONG / Ações" />
+            android:title="Inserir ONG / Ação" />
         <item
             android:id="@+id/nav_avaliar"
             android:icon="@drawable/avaliar"
-            android:title="Avaliar ONG / Ações" />
+            android:title="Avaliar ONG / Ação" />
     </group>
 
     <item android:title="Communicate">

@@ -15,6 +15,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.mudeomundo.aplicativo.mudeomundo.R;
+import com.mudeomundo.aplicativo.mudeomundo.config.ConfiguracaoFirebase;
 import com.mudeomundo.aplicativo.mudeomundo.model.Usuario;
 
 
@@ -22,11 +23,13 @@ public class UsuarioLogado extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private FirebaseAuth autenticacao;
-    private TextView username;
-    private TextView email;
     private Usuario usuario;
-    private DatabaseReference databaseReferencia = FirebaseDatabase.getInstance().getReference();
-    private DatabaseReference usuarioReferencia = databaseReferencia.child("usuarios");
+    private String contaUsuarioId;
+    private TextView nomeUsuarioTextView;
+    private FirebaseDatabase database;
+    DatabaseReference referenceUsuario;
+    private TextView nomeTextView;
+    private TextView emailTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +37,8 @@ public class UsuarioLogado extends AppCompatActivity
         setContentView(R.layout.activity_usuario_logado);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        database = FirebaseDatabase.getInstance();
+        referenceUsuario = database.getReference("usuario");
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -47,8 +52,22 @@ public class UsuarioLogado extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.setItemIconTintList(null);
 
-        username = (TextView) findViewById(R.id.contaId);
+        // carrega dados Usuario
+        emailTextView = (TextView) findViewById(R.id.emailTextViewUsuarioLogado);
+        nomeTextView = (TextView) findViewById(R.id.nomeTextViewUsuarioLogado);
+            autenticacao = ConfiguracaoFirebase.getFirebaseAutenticacao();
+        emailTextView.setText(autenticacao.getCurrentUser().getEmail());
+        nomeTextView.setText(autenticacao.getCurrentUser().getNome());
+
+        /*if (autenticacao.getCurrentUser() != null){
+            email = autenticacao.getCurrentUser().getEmail();
+            emailTextView.setText(email);
+        }else{
+            Toast.makeText(this, "Erro na autenticação", Toast.LENGTH_SHORT).show();
+        }*/
+
     }
+
 
     @Override
     public void onBackPressed() {
@@ -89,7 +108,8 @@ public class UsuarioLogado extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_conta) {
-            // Handle the camera action
+         //   configurarValoresNosCamposVisuais();
+
         } else if (id == R.id.nav_causa) {
 
         } else if (id == R.id.nav_inserir) {
@@ -106,4 +126,14 @@ public class UsuarioLogado extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+    /*  public void onDataChange(DataSnapshot dataSnapshot) {
+        Usuario usuario = dataSnapshot.getValue(Usuario.class);
+        Usuario.getInstance().setNome(usuario.getNome());
+        configurarValoresNosCamposVisuais();
+
+    }
+
+        private void configurarValoresNosCamposVisuais() {
+        nomeUsuarioTextView.setText(Usuario.getInstance().getNome());
+    }*/
 }

@@ -20,7 +20,7 @@ import com.mudeomundo.aplicativo.mudeomundo.config.ConfiguracaoFirebase;
         private String senha;
         private boolean sexofem;
         private boolean sexomasc;
-
+        private static Usuario instance;
 
     public Usuario(){
 
@@ -29,6 +29,11 @@ import com.mudeomundo.aplicativo.mudeomundo.config.ConfiguracaoFirebase;
     public void salvar(){
         DatabaseReference referenciaFirebase = ConfiguracaoFirebase.getFirebase();
         referenciaFirebase.child("usuarios").child(getId()).setValue(this);
+    }
+
+    @Exclude
+    public static Usuario getInstance (){
+        return instance == null ? instance = new Usuario () : instance;
     }
 
     @Exclude
