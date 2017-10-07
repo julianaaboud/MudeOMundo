@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.mudeomundo.aplicativo.mudeomundo.controller.UsuarioLogado"
     tools:showIn="@layout/app_bar_usuario_logado">
@@ -24,7 +24,7 @@
             android:layout_gravity="center"
             android:textSize="18sp"/>
 
-        <TextView
+        <EditText
             android:id="@+id/nomeTextViewUsuarioLogado"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -50,7 +50,7 @@
             android:layout_gravity="center"
             android:textSize="18sp"/>
 
-        <TextView
+        <EditText
             android:id="@+id/emailTextViewUsuarioLogado"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -61,6 +61,124 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:padding="8dp">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Data de Nascimento:"
+            android:padding="8dp"
+            android:layout_gravity="center"
+            android:textSize="18sp"/>
+
+        <EditText
+            android:id="@+id/dtNascTextViewUsuarioLogado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text=""
+            android:textSize="18sp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:padding="8dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CEP:"
+            android:padding="8dp"
+            android:layout_gravity="center"
+            android:textSize="18sp"/>
+
+        <EditText
+            android:id="@+id/cepTextViewUsuarioLogado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text=""
+            android:textSize="18sp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:padding="8dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cidade:"
+            android:padding="8dp"
+            android:layout_gravity="center"
+            android:textSize="18sp"/>
+
+        <EditText
+            android:id="@+id/cidadeTextViewUsuarioLogado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text=""
+            android:textSize="18sp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:padding="8dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Estado:"
+            android:padding="8dp"
+            android:layout_gravity="center"
+            android:textSize="18sp"/>
+
+        <EditText
+            android:id="@+id/estadoTextViewUsuarioLogado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text=""
+            android:textSize="18sp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:padding="8dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Telefone:"
+            android:padding="8dp"
+            android:layout_gravity="center"
+            android:textSize="18sp"/>
+
+        <EditText
+            android:id="@+id/telefoneTextViewUsuarioLogado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text=""
+            android:textSize="18sp"/>
+    </LinearLayout>
 
 </LinearLayout>

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.google.firebase.database.DatabaseReference;
 import com.mudeomundo.aplicativo.mudeomundo.R;
@@ -12,7 +13,7 @@ import com.mudeomundo.aplicativo.mudeomundo.config.ConfiguracaoFirebase;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button botaoLogin;
+    private TextView botaoLogin;
     private DatabaseReference referenciaFirebase;
     private Button botaoOng;
 
@@ -25,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         referenciaFirebase = ConfiguracaoFirebase.getFirebase();
 
 
-      botaoLogin = (Button) findViewById(R.id.botaoLoginId);
+      botaoLogin = (TextView) findViewById(R.id.botaoLoginId);
         botaoLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

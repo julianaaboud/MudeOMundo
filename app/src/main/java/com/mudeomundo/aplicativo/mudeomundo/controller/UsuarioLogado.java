@@ -9,11 +9,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
+import android.widget.EditText;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.mudeomundo.aplicativo.mudeomundo.R;
 import com.mudeomundo.aplicativo.mudeomundo.config.ConfiguracaoFirebase;
 import com.mudeomundo.aplicativo.mudeomundo.model.Usuario;
@@ -23,13 +26,10 @@ public class UsuarioLogado extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private FirebaseAuth autenticacao;
-    private Usuario usuario;
-    private String contaUsuarioId;
-    private TextView nomeUsuarioTextView;
     private FirebaseDatabase database;
     DatabaseReference referenceUsuario;
-    private TextView nomeTextView;
-    private TextView emailTextView;
+    private Usuario usuario;
+    private EditText nomeEditText, emailEditText, dtNascEditText, cepEditText, cidadeEditText, estadoEditText, telefoneEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,20 +53,65 @@ public class UsuarioLogado extends AppCompatActivity
         navigationView.setItemIconTintList(null);
 
         // carrega dados Usuario
-        emailTextView = (TextView) findViewById(R.id.emailTextViewUsuarioLogado);
-        nomeTextView = (TextView) findViewById(R.id.nomeTextViewUsuarioLogado);
-            autenticacao = ConfiguracaoFirebase.getFirebaseAutenticacao();
-        emailTextView.setText(autenticacao.getCurrentUser().getEmail());
-        nomeTextView.setText(autenticacao.getCurrentUser().getNome());
+        emailEditText = (EditText) findViewById(R.id.emailTextViewUsuarioLogado);
+        nomeEditText = (EditText) findViewById(R.id.nomeTextViewUsuarioLogado);
+        dtNascEditText = (EditText) findViewById(R.id.dtNascTextViewUsuarioLogado);
+        cepEditText = (EditText) findViewById(R.id.cepTextViewUsuarioLogado);
+        cidadeEditText = (EditText) findViewById(R.id.cidadeTextViewUsuarioLogado);
+        estadoEditText = (EditText) findViewById(R.id.estadoTextViewUsuarioLogado);
+        telefoneEditText = (EditText) findViewById(R.id.telefoneTextViewUsuarioLogado);
 
-        /*if (autenticacao.getCurrentUser() != null){
+        referenceUsuario = ConfiguracaoFirebase.getFirebase();
+
+
+        /* emailTextView.setText(autenticacao.getCurrentUser().getEmail());
+        nomeTextView.setText(autenticacao.getCurrentUser().getDisplayName());*/
+
+
+        referenceUsuario.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Usuario usuario = dataSnapshot.getValue(Usuario.class);
+                Usuario.getInstance().setNome(usuario.getNome());
+                Usuario.getInstance().setCep(usuario.getCep());
+                Usuario.getInstance().setCidade(usuario.getCidade());
+                Usuario.getInstance().setEstado(usuario.getEstado());
+                Usuario.getInstance().setTelefone(usuario.getTelefone());
+                Usuario.getInstance().setEmail(usuario.getEmail());
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+
+        private void configurarValoresNosCamposVisuais(){
+            nomeEditText.setText(Usuario.getInstance().getNome());
+            telefoneEditText.setText(Usuario.getInstance().getTelefone());
+            emailEditText.setText(Usuario.getInstance().getEmail());
+            cidadeEditText.setText(Usuario.getInstance().getCidade());
+            estadoEditText.setText(Usuario.getInstance().getEstado());
+            cepEditText.setText(Usuario.getInstance().getCep());
+        }
+
+        @Override
+        protected void onResume() {
+            super.onResume();
+            configurarValoresNosCamposVisuais();
+        }
+
+
+
+
+    /*if (autenticacao.getCurrentUser() != null){
             email = autenticacao.getCurrentUser().getEmail();
             emailTextView.setText(email);
         }else{
             Toast.makeText(this, "Erro na autenticação", Toast.LENGTH_SHORT).show();
         }*/
-
-    }
 
 
     @Override
@@ -126,14 +171,5 @@ public class UsuarioLogado extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-    /*  public void onDataChange(DataSnapshot dataSnapshot) {
-        Usuario usuario = dataSnapshot.getValue(Usuario.class);
-        Usuario.getInstance().setNome(usuario.getNome());
-        configurarValoresNosCamposVisuais();
 
-    }
-
-        private void configurarValoresNosCamposVisuais() {
-        nomeUsuarioTextView.setText(Usuario.getInstance().getNome());
-    }*/
 }

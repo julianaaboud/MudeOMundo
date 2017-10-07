@@ -3,7 +3,6 @@ package com.mudeomundo.aplicativo.mudeomundo.controller;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -113,7 +112,7 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
 
                     Toast.makeText(CadastroUsuarioActivity.this, "Erro: " + erroExcecao, Toast.LENGTH_LONG).show();
 
-                   Log.i("banco", "Erro ao cadastrar usuário" + task.getException());
+                //   Log.i("banco", "Erro ao cadastrar usuário" + task.getException());
                 }
             }
         });
