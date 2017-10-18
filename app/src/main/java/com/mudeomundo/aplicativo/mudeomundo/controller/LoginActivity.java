@@ -25,11 +25,13 @@ public class LoginActivity extends AppCompatActivity {
     private Button botaoLogar;
     private Usuario usuario;
     private FirebaseAuth autenticacao;
+    private static String TAG = LoginActivity.class.getName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        Log.d(TAG, "onCreate Login");
 
         email = (EditText) findViewById(R.id.editTextNomeId);
         senha = (EditText) findViewById(R.id.editTextPasswordId);
@@ -48,6 +50,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void validarLogin() {
+        Log.d(TAG, "validarLogin");
         autenticacao = ConfiguracaoFirebase.getFirebaseAutenticacao();
         autenticacao.signInWithEmailAndPassword(
                 usuario.getEmail(),
@@ -55,12 +58,14 @@ public class LoginActivity extends AppCompatActivity {
         ).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
+                Log.d(TAG, "onCreate Login if");
                 if (task.isSuccessful()) {
+                    Log.d(TAG, "onCreate Login Sucesso");
                     Intent intent = new Intent(LoginActivity.this, UsuarioLogado.class);
                     startActivity(intent);
 
                 } else {
-                    Log.i("loginfail", "erro" + task.getException());
+                //    Log.i("loginfail", "erro" + task.getException());
                     Toast.makeText(LoginActivity.this, "Erro ao fazer login ", Toast.LENGTH_LONG).show();
                 }
             }

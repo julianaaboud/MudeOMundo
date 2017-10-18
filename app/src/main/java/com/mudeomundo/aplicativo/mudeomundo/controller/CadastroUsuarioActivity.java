@@ -76,10 +76,9 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
 
 
     private void cadastrarUsuario(){
+        //autenticacao = referenciaFirebase
         autenticacao = ConfiguracaoFirebase.getFirebaseAutenticacao();
-        autenticacao.createUserWithEmailAndPassword(
-                usuario.getEmail(),
-                usuario.getSenha()
+        autenticacao.createUserWithEmailAndPassword(usuario.getEmail(), usuario.getSenha()
         ).addOnCompleteListener(CadastroUsuarioActivity.this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -107,7 +106,8 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
                         erroExcecao = "Este e-mail já está em uso!";
                     }catch (Exception e){
                         erroExcecao = "ao efetuar cadastro!";
-                        e.printStackTrace();
+                       // e.printStackTrace();
+                  //      Log.d("CadastroUsuarioActi", "cadastrarUsuario: " + e.getMessage());
                     }
 
                     Toast.makeText(CadastroUsuarioActivity.this, "Erro: " + erroExcecao, Toast.LENGTH_LONG).show();
