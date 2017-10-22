@@ -119,7 +119,8 @@
                         android:id="@+id/femId"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Feminino" />
+                        android:text="Feminino"
+                        />
 
                     <RadioButton
                         android:id="@+id/mascId"
@@ -181,49 +182,65 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:padding="4dp"
-                    android:text="Animal" />
+                    android:text="Animal"
+                    android:id="@+id/animalId"
+                    android:onClick="onCheckboxClicked"/>
 
                 <CheckBox
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:padding="4dp"
-                    android:text="Crianças" />
+                    android:text="Criança"
+                    android:id="@+id/criancaId"
+                    android:onClick="onCheckboxClicked"/>
 
                 <CheckBox
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:padding="4dp"
-                    android:text="Idoso" />
+                    android:text="Idoso"
+                    android:id="@+id/idosoId"
+                    android:onClick="onCheckboxClicked"/>
 
                 <CheckBox
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:padding="4dp"
-                    android:text="Refugiado" />
+                    android:text="Refugiado"
+                    android:id="@+id/refugiadoId"
+                    android:onClick="onCheckboxClicked"/>
 
                 <CheckBox
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:padding="4dp"
-                    android:text="Meio Ambiente" />
+                    android:text="Meio Ambiente"
+                    android:id="@+id/meioAmbienteId"
+                    android:onClick="onCheckboxClicked"/>
 
                 <CheckBox
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:padding="4dp"
-                    android:text="Empoderamento Feminino" />
+                    android:text="Empoderamento Feminino"
+                    android:id="@+id/empoderamentoFemininoId"
+                    android:onClick="onCheckboxClicked"/>
 
                 <CheckBox
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:padding="4dp"
-                    android:text="Cegueira" />
+                    android:text="Cegueira"
+                    android:id="@+id/cegueiraId"
+                    android:onClick="onCheckboxClicked"/>
 
                 <CheckBox
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:padding="4dp"
-                    android:text="Paralisia Cerebral" />
+                    android:text="Paralisia Cerebral"
+                    android:id="@+id/paralisiaCerebralId"
+                    android:onClick="onCheckboxClicked"/>
 
             </LinearLayout>
 

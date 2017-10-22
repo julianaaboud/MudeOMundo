@@ -10,6 +10,8 @@ import com.mudeomundo.aplicativo.mudeomundo.R;
 
 public class BuscaOngActivity extends AppCompatActivity {
 
+    private Button botaoBuscaNome;
+
     private Button botaoBuscaMinhaLocalizacao;
 
     @Override
@@ -22,6 +24,14 @@ public class BuscaOngActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(BuscaOngActivity.this, MapsActivity.class));
+            }
+        });
+
+        botaoBuscaNome = (Button) findViewById(R.id.botaoBuscaNomeId);
+        botaoBuscaNome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
             }
         });
     }

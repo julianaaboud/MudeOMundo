@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.mudeomundo.aplicativo.mudeomundo.R;
 
@@ -20,6 +19,7 @@ public class InserirFragment extends Fragment {
     private EditText telefone;
     private EditText email;
     private EditText proposito;
+    private EditText cnpj;
     private EditText cep;
     private EditText estado;
     private EditText cidade;
@@ -45,6 +45,7 @@ public class InserirFragment extends Fragment {
         estado = (EditText) rootView.findViewById(R.id.estadoOngId);
         telefone = (EditText) rootView.findViewById(R.id.telefoneOngId);
         email = (EditText) rootView.findViewById(R.id.emailOngId);
+        cnpj = (EditText) rootView.findViewById(R.id.cnpjOngId);
         endereco = (EditText) rootView.findViewById(R.id.enderecoOngId);
         proposito = (EditText) rootView.findViewById(R.id.propositoOngId);
         botaoCadastrarOng = (TextView) rootView.findViewById(R.id.cadastrarOngId);
@@ -61,6 +62,7 @@ public class InserirFragment extends Fragment {
                 ong.setTelefone(telefone.getText().toString());
                 ong.setEmail(email.getText().toString());
                 ong.setProposito(proposito.getText().toString());
+                ong.setCnpj(cnpj.getText().toString());
                 cadastrarOng();
                 Log.d(TAG, "onCreateView");
             }
@@ -69,9 +71,7 @@ public class InserirFragment extends Fragment {
     }
 
     private void cadastrarOng(){
-        ong.salvar();
-        Toast.makeText(InserirFragment.this.getActivity(), "Sucesso ao cadastrar ong", Toast.LENGTH_LONG).show();
-        getActivity().getFragmentManager().popBackStack();
+        ong.salvar(getActivity());
        // Log.d(TAG, "cadastrarOng");
     }
 

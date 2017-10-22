@@ -53,15 +53,16 @@ public class LoginActivity extends AppCompatActivity {
         Log.d(TAG, "validarLogin");
         autenticacao = ConfiguracaoFirebase.getFirebaseAutenticacao();
         autenticacao.signInWithEmailAndPassword(
-                usuario.getEmail(),
-                usuario.getSenha()
+                usuario.getEmail().trim(),
+                usuario.getSenha().trim()
         ).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 Log.d(TAG, "onCreate Login if");
                 if (task.isSuccessful()) {
                     Log.d(TAG, "onCreate Login Sucesso");
-                    Intent intent = new Intent(LoginActivity.this, UsuarioLogado.class);
+                    Intent intent = new Intent(LoginActivity.this, UsuarioLogadoActivity.class);
+                    intent.putExtra("token", autenticacao.getCurrentUser().getUid());
                     startActivity(intent);
 
                 } else {

@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
@@ -21,7 +22,7 @@ import com.mudeomundo.aplicativo.mudeomundo.R;
 import com.mudeomundo.aplicativo.mudeomundo.config.ConfiguracaoFirebase;
 import com.mudeomundo.aplicativo.mudeomundo.model.Usuario;
 
-public class CadastroUsuarioActivity extends AppCompatActivity {
+public class CadastroUsuarioActivity extends AppCompatActivity{
 
     private EditText nome;
     private EditText dt_nasc;
@@ -35,8 +36,24 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
     private RadioButton sexomasc;
     private TextView botaoCadastrar;
     private Usuario usuario;
+    private CheckBox animal;
+    private CheckBox crianca;
+    private CheckBox idoso;
+    private CheckBox refugiado;
+    private CheckBox meioAmbiente;
+    private CheckBox empoderamentoFeminino;
+    private CheckBox cegueira;
+    private CheckBox paralisiaCerebral;
 
+
+    private static final String TAG = CadastroUsuarioActivity.class.getName();
     private FirebaseAuth autenticacao;
+
+    private boolean isMasc = false;
+    private boolean isFem = false;
+    private boolean isOther = false;
+
+    private String sexo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +71,39 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
         sexofem = (RadioButton) findViewById(R.id.femId);
         sexomasc = (RadioButton) findViewById(R.id.mascId);
         botaoCadastrar = (TextView) findViewById(R.id.cadastrarId);
+        animal = (CheckBox) findViewById(R.id.animalId);
+        crianca = (CheckBox) findViewById(R.id.criancaId);
+        idoso = (CheckBox) findViewById(R.id.idosoId);
+        refugiado = (CheckBox) findViewById(R.id.refugiadoId);
+        meioAmbiente = (CheckBox) findViewById(R.id.meioAmbienteId);
+        empoderamentoFeminino = (CheckBox) findViewById(R.id.empoderamentoFemininoId);
+        cegueira = (CheckBox) findViewById(R.id.cegueiraId);
+        paralisiaCerebral = (CheckBox) findViewById(R.id.paralisiaCerebralId);
+
+        sexofem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sexo = sexofem.getText().toString();
+            }
+        });
+
+        sexomasc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                sexo = sexomasc.getText().toString();
+            }
+        });
+
+
+
+        /*sexOther.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                isOther = true;
+                  sexo = sexoOther.getText().toString();
+            }
+        });*/
 
         botaoCadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,14 +117,41 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
                 usuario.setTelefone(telefone.getText().toString());
                 usuario.setEmail(email.getText().toString());
                 usuario.setSenha(senha.getText().toString());
-                usuario.setSexofem(sexofem.getText().equals(true));
-                usuario.setSexomasc(sexomasc.getText().equals(true));
+                usuario.setSexo(sexo);
+
+
                 cadastrarUsuario();
             }
         });
+
     }
 
 
+    public void onCheckboxClicked(View view) {
+        // Is the view now checked?
+        boolean checked = ((CheckBox) view).isChecked();
+
+        // Check which checkbox was clicked
+      /*  switch(view.getId()) {
+            case R.id.animalId:
+                if (checked){
+
+                }
+
+                else
+
+                break;
+            case R.id.criancaId:
+                if (checked)
+                // Cheese me
+            else
+                // I'm lactose intolerant
+                break;
+            // TODO: Veggie sandwich
+        }
+    }*/
+
+    }
     private void cadastrarUsuario(){
         //autenticacao = referenciaFirebase
         autenticacao = ConfiguracaoFirebase.getFirebaseAutenticacao();

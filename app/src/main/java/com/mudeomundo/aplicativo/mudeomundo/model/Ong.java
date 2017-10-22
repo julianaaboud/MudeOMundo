@@ -1,10 +1,15 @@
 package com.mudeomundo.aplicativo.mudeomundo.model;
 
+import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.Exclude;
 import com.mudeomundo.aplicativo.mudeomundo.config.ConfiguracaoFirebase;
+
+import static android.R.attr.key;
 
 /**
  * Created by Juliana on 11/10/2017.
@@ -15,6 +20,7 @@ public class Ong {
     private String nome;
     private String endereco;
     private String cep;
+    private String cnpj;
     private String cidade;
     private String estado;
     private String proposito;
@@ -28,10 +34,19 @@ public class Ong {
 
     }
 
-    public void salvar(){
+    public void salvar(final Context context){
         Log.d(TAG, "cadastrarOng salvar");
         DatabaseReference referenciaFirebase = ConfiguracaoFirebase.getFirebase();
-        referenciaFirebase.child("ong").setValue(this);
+        referenciaFirebase = referenciaFirebase.child("ong").push();
+        referenciaFirebase.setValue(this, new DatabaseReference.CompletionListener() {
+            @Override
+            public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
+                Toast.makeText(context, "Sucesso ao cadastrar ONG", Toast.LENGTH_LONG).show();
+            }
+        });
+
+
+        Log.d (TAG, "log de teste " + key);
     }
     @Exclude
     public static Ong getInstance (){
@@ -122,4 +137,8 @@ public class Ong {
     public static void setInstance(Ong instance) {
         Ong.instance = instance;
     }
+
+    public String getCnpj() { return cnpj; }
+
+    public void setCnpj(String cnpj) { this.cnpj = cnpj; }
 }

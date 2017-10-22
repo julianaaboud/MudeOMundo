@@ -18,8 +18,7 @@ import com.mudeomundo.aplicativo.mudeomundo.config.ConfiguracaoFirebase;
         private String telefone;
         private String email;
         private String senha;
-        private boolean sexofem;
-        private boolean sexomasc;
+        private String sexo;
         private static Usuario instance;
 
     public Usuario(){
@@ -110,19 +109,11 @@ import com.mudeomundo.aplicativo.mudeomundo.config.ConfiguracaoFirebase;
         this.senha = senha;
     }
 
-    public boolean isSexofem() {
-        return sexofem;
+    public String getSexo() {
+        return sexo;
     }
 
-    public void setSexofem(boolean sexofem) {
-        this.sexofem = sexofem;
-    }
-
-    public boolean isSexomasc() {
-        return sexomasc;
-    }
-
-    public void setSexomasc(boolean sexomasc) {
-        this.sexomasc = sexomasc;
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
     }
 }

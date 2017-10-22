@@ -11,14 +11,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.EditText;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.mudeomundo.aplicativo.mudeomundo.R;
 import com.mudeomundo.aplicativo.mudeomundo.model.AvaliarFragment;
 import com.mudeomundo.aplicativo.mudeomundo.model.CausaFragment;
@@ -27,15 +23,14 @@ import com.mudeomundo.aplicativo.mudeomundo.model.ProfileFragment;
 import com.mudeomundo.aplicativo.mudeomundo.model.Usuario;
 
 
-public class UsuarioLogado extends AppCompatActivity
+public class UsuarioLogadoActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private FirebaseAuth autenticacao;
     private FirebaseDatabase database;
     DatabaseReference referenceUsuario;
     private Usuario usuario;
-    private EditText nomeEditText, emailEditText, dtNascEditText, cepEditText, cidadeEditText, estadoEditText, telefoneEditText;
-
+    private Bundle bundle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,14 +38,8 @@ public class UsuarioLogado extends AppCompatActivity
         setContentView(R.layout.activity_usuario_logado);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        bundle = getIntent().getExtras();
 
-        emailEditText = (EditText) findViewById(R.id.emailTextViewUsuarioLogado);
-        nomeEditText = (EditText) findViewById(R.id.nomeTextViewUsuarioLogado);
-        dtNascEditText = (EditText) findViewById(R.id.dtNascTextViewUsuarioLogado);
-        cepEditText = (EditText) findViewById(R.id.cepTextViewUsuarioLogado);
-        cidadeEditText = (EditText) findViewById(R.id.cidadeTextViewUsuarioLogado);
-        estadoEditText = (EditText) findViewById(R.id.estadoTextViewUsuarioLogado);
-        telefoneEditText = (EditText) findViewById(R.id.telefoneTextViewUsuarioLogado);
 
     /*
         referenceUsuario = database.getReference("usuarios");
@@ -58,29 +47,6 @@ public class UsuarioLogado extends AppCompatActivity
         referenceUsuario = ConfiguracaoFirebase.getFirebase();
         referenceUsuario = database.getReference("usuarios");*/
 
-        database = FirebaseDatabase.getInstance();
-        referenceUsuario = FirebaseDatabase.getInstance().getReference().child("usuarios");
-
-        referenceUsuario.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                Usuario usuario = dataSnapshot.child("usuarios").getValue(Usuario.class);
-                //System.out.println(usuario);
-                //String nomeUsuario = usuario.getNome();
-                /*Usuario.getInstance().setNome(usuario.getNome());
-                Usuario.getInstance().setCep(usuario.getCep());
-                Usuario.getInstance().setCidade(usuario.getCidade());
-                Usuario.getInstance().setEstado(usuario.getEstado());
-                Usuario.getInstance().setTelefone(usuario.getTelefone());
-                Usuario.getInstance().setEmail(usuario.getEmail());
-                configurarValoresNosCamposVisuais();*/
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -95,14 +61,13 @@ public class UsuarioLogado extends AppCompatActivity
         navigationView.setItemIconTintList(null);
 
 
-
     }
 
-        @Override
-            protected void onResume() {
-            super.onResume();
-           // configurarValoresNosCamposVisuais();
-        }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // configurarValoresNosCamposVisuais();
+    }
 
    /*     private void configurarValoresNosCamposVisuais(){
             nomeEditText.setText(Usuario.getInstance().getNome());
@@ -183,14 +148,15 @@ public class UsuarioLogado extends AppCompatActivity
         switch (itemId) {
             case R.id.nav_conta:
                 fragment = new ProfileFragment();
+                fragment.setArguments(bundle);
                 break;
             case R.id.nav_causa:
                 fragment = new CausaFragment();
                 break;
-            case R.id.nav_inserir:
+            case R.id.nav_inserir_ong:
                 fragment = new InserirFragment();
                 break;
-            case R.id.nav_avaliar:
+            case R.id.nav_inserir_acao:
                 fragment = new AvaliarFragment();
                 break;
         }

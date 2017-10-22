@@ -27,7 +27,7 @@
         <activity android:name=".controller.CadastroUsuarioActivity" />
         <activity android:name=".MainActivityLogado" />
         <activity
-            android:name=".controller.UsuarioLogado"
+            android:name=".controller.UsuarioLogadoActivity"
             android:label="@string/title_activity_usuario_logado"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".controller.BuscaOngActivity" />
