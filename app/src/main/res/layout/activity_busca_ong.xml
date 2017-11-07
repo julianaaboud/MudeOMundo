@@ -6,6 +6,11 @@
     android:layout_height="wrap_content"
     tools:context="com.mudeomundo.aplicativo.mudeomundo.controller.BuscaOngActivity">
 
+    <EditText
+        android:id="@+id/searchId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
     <Button
         android:id="@+id/botaoBuscaNomeId"
         android:layout_width="match_parent"
@@ -19,21 +24,7 @@
         tools:layout_editor_absoluteX="147dp"
         tools:layout_editor_absoluteY="118dp" />
 
-
-    <EditText
-        android:id="@+id/editTextBuscaOngNomeId"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/botaoBuscaNomeId"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center_vertical"
-        android:layout_marginBottom="19dp"
-        android:ems="10"
-        android:hint="Digite o nome da ONG:"
-        android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="98dp"
-        tools:layout_editor_absoluteY="55dp" />
-
+    
     <Button
         android:id="@+id/botaoBuscaLocalizacaoAtual"
         android:layout_width="match_parent"

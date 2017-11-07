@@ -19,7 +19,7 @@
             android:layout_gravity="center"
             android:textSize="18sp"/>
 
-        <EditText
+        <TextView
             android:id="@+id/nomeTextViewUsuarioLogado"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -45,7 +45,7 @@
             android:layout_gravity="center"
             android:textSize="18sp"/>
 
-        <EditText
+        <TextView
             android:id="@+id/emailTextViewUsuarioLogado"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -80,7 +80,7 @@
             android:layout_gravity="center"
             android:textSize="18sp"/>
 
-        <EditText
+        <TextView
             android:id="@+id/cepTextViewUsuarioLogado"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -104,7 +104,7 @@
             android:layout_gravity="center"
             android:textSize="18sp"/>
 
-        <EditText
+        <TextView
             android:id="@+id/cidadeTextViewUsuarioLogado"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -128,7 +128,7 @@
             android:layout_gravity="center"
             android:textSize="18sp"/>
 
-        <EditText
+        <TextView
             android:id="@+id/estadoTextViewUsuarioLogado"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -152,7 +152,7 @@
             android:layout_gravity="center"
             android:textSize="18sp"/>
 
-        <EditText
+        <TextView
             android:id="@+id/telefoneTextViewUsuarioLogado"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -160,5 +160,7 @@
             android:text=""
             android:textSize="18sp"/>
     </LinearLayout>
+
+
 
 </LinearLayout>

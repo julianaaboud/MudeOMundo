@@ -16,9 +16,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.mudeomundo.aplicativo.mudeomundo.R;
-import com.mudeomundo.aplicativo.mudeomundo.model.AvaliarFragment;
+import com.mudeomundo.aplicativo.mudeomundo.model.InserirAcaoFragment;
 import com.mudeomundo.aplicativo.mudeomundo.model.CausaFragment;
-import com.mudeomundo.aplicativo.mudeomundo.model.InserirFragment;
+import com.mudeomundo.aplicativo.mudeomundo.model.InserirOngFragment;
 import com.mudeomundo.aplicativo.mudeomundo.model.ProfileFragment;
 import com.mudeomundo.aplicativo.mudeomundo.model.Usuario;
 
@@ -154,10 +154,10 @@ public class UsuarioLogadoActivity extends AppCompatActivity
                 fragment = new CausaFragment();
                 break;
             case R.id.nav_inserir_ong:
-                fragment = new InserirFragment();
+                fragment = new InserirOngFragment();
                 break;
             case R.id.nav_inserir_acao:
-                fragment = new AvaliarFragment();
+                fragment = new InserirAcaoFragment();
                 break;
         }
 

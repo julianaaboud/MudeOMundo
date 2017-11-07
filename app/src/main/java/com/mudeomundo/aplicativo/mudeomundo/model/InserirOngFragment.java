@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.mudeomundo.aplicativo.mudeomundo.R;
 
-public class InserirFragment extends Fragment {
+public class InserirOngFragment extends Fragment {
 
     private EditText nome;
     private EditText endereco;
@@ -26,7 +26,7 @@ public class InserirFragment extends Fragment {
     private boolean status;
     private TextView botaoCadastrarOng;
     private Ong ong;
-    private static String TAG = InserirFragment.class.getName();
+    private static String TAG = InserirOngFragment.class.getName();
    // private DatabaseReference referenciaFirebase = ConfiguracaoFirebase.getFirebase();
 
 
@@ -37,7 +37,7 @@ public class InserirFragment extends Fragment {
         // Inflate the layout for this fragment
      //   referenciaFirebase.child("ong");
 
-        View rootView = inflater.inflate(R.layout.fragment_inserir, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_ong, container, false);
 
         nome = (EditText) rootView.findViewById(R.id.nomeOngId);
         cep = (EditText) rootView.findViewById(R.id.cepOngId);
@@ -79,7 +79,7 @@ public class InserirFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         //you can set the title for your toolbar here for different fragments different titles
-        getActivity().setTitle("Menu Inserir");
+        getActivity().setTitle("Inserir Ong");
 
 
     }

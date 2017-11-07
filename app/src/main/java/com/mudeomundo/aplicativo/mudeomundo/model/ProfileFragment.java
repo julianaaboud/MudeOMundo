@@ -7,7 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -21,13 +21,12 @@ import com.mudeomundo.aplicativo.mudeomundo.config.ConfiguracaoFirebase;
 public class ProfileFragment extends Fragment {
     private Bundle bundle;
     private String token;
-    private EditText nome;
-    private EditText cep;
-    private EditText cidade;
-    private EditText estado;
-    private EditText telefone;
-    private EditText email;
-    private EditText senha;
+    private TextView nome;
+    private TextView cep;
+    private TextView cidade;
+    private TextView estado;
+    private TextView telefone;
+    private TextView email;
 
     private FirebaseAuth autenticacao;
     private FirebaseDatabase database;
@@ -51,12 +50,12 @@ public class ProfileFragment extends Fragment {
 
         View rootView = inflater.inflate(R.layout.fragment_profile, container, false);
 
-        nome = (EditText) rootView.findViewById(R.id.nomeTextViewUsuarioLogado);
-        cep = (EditText) rootView.findViewById(R.id.cepTextViewUsuarioLogado);
-        cidade = (EditText) rootView.findViewById(R.id.cidadeTextViewUsuarioLogado);
-        estado = (EditText) rootView.findViewById(R.id.estadoTextViewUsuarioLogado);
-        telefone = (EditText) rootView.findViewById(R.id.telefoneTextViewUsuarioLogado);
-        email = (EditText) rootView.findViewById(R.id.emailTextViewUsuarioLogado);
+        nome = (TextView) rootView.findViewById(R.id.nomeTextViewUsuarioLogado);
+        cep = (TextView) rootView.findViewById(R.id.cepTextViewUsuarioLogado);
+        cidade = (TextView) rootView.findViewById(R.id.cidadeTextViewUsuarioLogado);
+        estado = (TextView) rootView.findViewById(R.id.estadoTextViewUsuarioLogado);
+        telefone = (TextView) rootView.findViewById(R.id.telefoneTextViewUsuarioLogado);
+        email = (TextView) rootView.findViewById(R.id.emailTextViewUsuarioLogado);
 
         referenceUsuario.addValueEventListener(new ValueEventListener() {
             @Override
@@ -69,12 +68,17 @@ public class ProfileFragment extends Fragment {
                     for (DataSnapshot user: userChildren){
                         if(user.getKey().equals(token)){
                             String key = user.getValue().toString();
-                            Log.d(TAG, "onDataChange key: " + key);
+                           //Log.d(TAG, "onDataChange key: " + key);
 
                             usuario = user.getValue(Usuario.class);
-                            Log.d(TAG, "onDataChange key: " + usuario.getNome());
+                            //Log.d(TAG, "onDataChange key: " + usuario.getNome());
 
                             nome.setText(usuario.getNome());
+                            cep.setText(usuario.getCep());
+                            cidade.setText(usuario.getCidade());
+                            estado.setText(usuario.getEstado());
+                            telefone.setText(usuario.getTelefone());
+                            email.setText(usuario.getEmail());
                         }
                     }
                 }

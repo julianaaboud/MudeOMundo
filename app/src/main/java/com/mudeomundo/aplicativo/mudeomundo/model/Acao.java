@@ -6,54 +6,44 @@ import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.Exclude;
 import com.mudeomundo.aplicativo.mudeomundo.config.ConfiguracaoFirebase;
 
-import static android.R.attr.key;
-
 /**
- * Created by Juliana on 11/10/2017.
+ * Created by Juliana on 07/11/2017.
  */
 
-public class Ong {
+public class Acao {
     private String id;
     private String nome;
     private String endereco;
     private String cep;
-    private String cnpj;
+    private String data;
     private String cidade;
     private String estado;
     private String proposito;
     private String email;
     private String telefone;
     private boolean status;
-    private static Ong instance;
-    private static String TAG = Ong.class.getName();
+    private static Acao instance;
+    private static String TAG = Acao.class.getName();
 
-    public Ong() {
+    public Acao(){
 
     }
-
-    public void salvar(final Context context){
-        Log.d(TAG, "cadastrarOng salvar");
+    public void salvar(final Context context) {
+        Log.d(TAG, "cadastrarAcao salvar");
         DatabaseReference referenciaFirebase = ConfiguracaoFirebase.getFirebase();
-        referenciaFirebase = referenciaFirebase.child("ong").push();
+        referenciaFirebase = referenciaFirebase.child("acao").push();
         referenciaFirebase.setValue(this, new DatabaseReference.CompletionListener() {
             @Override
             public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
-                Toast.makeText(context, "Sucesso ao cadastrar ONG", Toast.LENGTH_LONG).show();
+                Toast.makeText(context, "Sucesso ao cadastrar Ação", Toast.LENGTH_LONG).show();
+
             }
         });
 
-
-        Log.d (TAG, "log de teste " + key);
     }
-    @Exclude
-public static Ong getInstance (){
-    return instance == null ? instance = new Ong() : instance;
-}
 
-    @Exclude
     public String getId() {
         return id;
     }
@@ -78,28 +68,20 @@ public static Ong getInstance (){
         this.endereco = endereco;
     }
 
-    public String getProposito() {
-        return proposito;
-    }
-
-    public void setProposito(String proposito) {
-        this.proposito = proposito;
-    }
-
-    public boolean isStatus() {
-        return status;
-    }
-
-    public void setStatus(boolean status) {
-        this.status = status;
-    }
-
     public String getCep() {
         return cep;
     }
 
     public void setCep(String cep) {
         this.cep = cep;
+    }
+
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
     }
 
     public String getCidade() {
@@ -118,6 +100,14 @@ public static Ong getInstance (){
         this.estado = estado;
     }
 
+    public String getProposito() {
+        return proposito;
+    }
+
+    public void setProposito(String proposito) {
+        this.proposito = proposito;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -133,12 +123,4 @@ public static Ong getInstance (){
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
-
-    public static void setInstance(Ong instance) {
-        Ong.instance = instance;
-    }
-
-    public String getCnpj() { return cnpj; }
-
-    public void setCnpj(String cnpj) { this.cnpj = cnpj; }
 }
