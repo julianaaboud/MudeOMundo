@@ -11,6 +11,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
+    <SearchView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/addLabelText"
+        />
+
     <Button
         android:id="@+id/botaoBuscaNomeId"
         android:layout_width="match_parent"
@@ -24,7 +30,10 @@
         tools:layout_editor_absoluteX="147dp"
         tools:layout_editor_absoluteY="118dp" />
 
-    
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
     <Button
         android:id="@+id/botaoBuscaLocalizacaoAtual"
         android:layout_width="match_parent"
