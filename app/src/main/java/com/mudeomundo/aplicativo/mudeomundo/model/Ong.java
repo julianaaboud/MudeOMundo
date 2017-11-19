@@ -141,4 +141,21 @@ public static Ong getInstance (){
     public String getCnpj() { return cnpj; }
 
     public void setCnpj(String cnpj) { this.cnpj = cnpj; }
+
+    @Override
+    public String toString() {
+        return "Ong{" +
+                "id='" + id + '\'' +
+                ", nome='" + nome + '\'' +
+                ", endereco='" + endereco + '\'' +
+                ", cep='" + cep + '\'' +
+                ", cnpj='" + cnpj + '\'' +
+                ", cidade='" + cidade + '\'' +
+                ", estado='" + estado + '\'' +
+                ", proposito='" + proposito + '\'' +
+                ", email='" + email + '\'' +
+                ", telefone='" + telefone + '\'' +
+                ", status=" + status +
+                '}';
+    }
 }

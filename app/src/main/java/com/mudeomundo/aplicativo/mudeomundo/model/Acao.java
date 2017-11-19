@@ -123,4 +123,21 @@ public class Acao {
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
+
+    @Override
+    public String toString() {
+        return "Acao{" +
+                "id='" + id + '\'' +
+                ", nome='" + nome + '\'' +
+                ", endereco='" + endereco + '\'' +
+                ", cep='" + cep + '\'' +
+                ", data='" + data + '\'' +
+                ", cidade='" + cidade + '\'' +
+                ", estado='" + estado + '\'' +
+                ", proposito='" + proposito + '\'' +
+                ", email='" + email + '\'' +
+                ", telefone='" + telefone + '\'' +
+                ", status=" + status +
+                '}';
+    }
 }

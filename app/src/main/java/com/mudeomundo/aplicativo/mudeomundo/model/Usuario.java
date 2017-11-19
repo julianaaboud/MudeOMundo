@@ -116,4 +116,20 @@ import com.mudeomundo.aplicativo.mudeomundo.config.ConfiguracaoFirebase;
     public void setSexo(String sexo) {
         this.sexo = sexo;
     }
+
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "id='" + id + '\'' +
+                ", nome='" + nome + '\'' +
+                ", dt_nasc='" + dt_nasc + '\'' +
+                ", cep='" + cep + '\'' +
+                ", cidade='" + cidade + '\'' +
+                ", estado='" + estado + '\'' +
+                ", telefone='" + telefone + '\'' +
+                ", email='" + email + '\'' +
+                ", senha='" + senha + '\'' +
+                ", sexo='" + sexo + '\'' +
+                '}';
+    }
 }
