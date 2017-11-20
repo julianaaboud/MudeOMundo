@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -34,8 +35,10 @@ public class BuscaOngActivity extends AppCompatActivity {
     private ListView listaOng;
     private static String TAG = BuscaOngActivity.class.getName();
     ArrayList<Ong> arrayDeOng = new ArrayList<>();
-    private List<Ong> listOng;
-
+    private List<Ong> listOng ;
+    private RecyclerView recyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
 
 
     @Override
@@ -44,7 +47,15 @@ public class BuscaOngActivity extends AppCompatActivity {
         setContentView(R.layout.activity_busca_ong);
         listaOng = (ListView) findViewById(R.id.listViewId);
         nomeOng = (EditText) findViewById(R.id.searchId);
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler);
+        recyclerView = (RecyclerView) findViewById(R.id.recycler);
+
+        //Setando Geranciador de Layout
+        mLayoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(mLayoutManager);
+
+        //Setando Adapter
+        recyclerView.setAdapter(new NossoAdapter(listOng, this));
+
 
         botaoBuscaMinhaLocalizacao = (Button) findViewById(R.id.botaoBuscaLocalizacaoAtual);
         botaoBuscaMinhaLocalizacao.setOnClickListener(new View.OnClickListener() {
@@ -99,8 +110,6 @@ public class BuscaOngActivity extends AppCompatActivity {
         //Recebendo os dados do banco
         listOng = arrayDeOng;
 
-        //Adapter
-        recyclerView.setAdapter(new NossoAdapter(listOng, this));
 
         //Criando o adapter
         //ArrayAdapter<Ong> adaptador = new ArrayAdapter<Ong>(this, simple_list_item_1, arrayDeOng);
@@ -112,8 +121,9 @@ public class BuscaOngActivity extends AppCompatActivity {
     public class NossoAdapter extends RecyclerView.Adapter{
         private List<Ong> listOng;
         private Context context;
+        private String[] mDataset;
 
-        public NossoAdapter(List<Ong> listOng){
+        public NossoAdapter(List<Ong> listOng, BuscaOngActivity buscaOngActivity){
             this.listOng = listOng;
             this.context = context;
         }
@@ -121,7 +131,7 @@ public class BuscaOngActivity extends AppCompatActivity {
         @Override
         public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View view = LayoutInflater.from(context)
-                    .inflate(R.layout.textViewRecycle, parent, false);
+                    .inflate(R.layout.activity_busca_ong, parent, false);
             NossoViewHolder holder = new NossoViewHolder(view);
             return holder;
         }
@@ -152,16 +162,16 @@ public class BuscaOngActivity extends AppCompatActivity {
 
         public NossoViewHolder(View view) {
             super(view);
-            nome = (TextView) view.findViewById(R.id.textViewRecycleNome);
-            telefone = (TextView) view.findViewById(R.id.textViewRecycleTelefone);
-            endereco = (TextView) view.findViewById(R.id.textViewRecycleEndereco);
-            cidade = (TextView) view.findViewById(R.id.textViewRecycleCidade);
-            estado = (TextView) view.findViewById(R.id.textViewRecycleEstado);
-            cep = (TextView) view.findViewById(R.id.textViewRecycleCep);
-            cnpj = (TextView) view.findViewById(R.id.textViewRecycleCnpj);
-            proposito = (TextView) view.findViewById(R.id.textViewRecycleProposito);
-            email = (TextView) view.findViewById(R.id.textViewRecycleEmail);
-            status = (TextView) view.findViewById(R.id.textViewRecycleStatus);
+            nome = (TextView) view.findViewById(R.id.textViewRecyclerNome);
+            telefone = (TextView) view.findViewById(R.id.textViewRecyclerTelefone);
+            endereco = (TextView) view.findViewById(R.id.textViewRecyclerEndereco);
+            cidade = (TextView) view.findViewById(R.id.textViewRecyclerCidade);
+            estado = (TextView) view.findViewById(R.id.textViewRecyclerEstado);
+            cep = (TextView) view.findViewById(R.id.textViewRecyclerCep);
+            cnpj = (TextView) view.findViewById(R.id.textViewRecyclerCnpj);
+            proposito = (TextView) view.findViewById(R.id.textViewRecyclerProposito);
+            email = (TextView) view.findViewById(R.id.textViewRecyclerEmail);
+            status = (TextView) view.findViewById(R.id.textViewRecyclerStatus);
         }
     }
 

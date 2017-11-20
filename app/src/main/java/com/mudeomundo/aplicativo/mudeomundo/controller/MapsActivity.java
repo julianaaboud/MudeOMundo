@@ -1,8 +1,11 @@
 package com.mudeomundo.aplicativo.mudeomundo.controller;
 
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -10,6 +13,10 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.mudeomundo.aplicativo.mudeomundo.R;
+import com.mudeomundo.aplicativo.mudeomundo.model.Ong;
+
+import java.io.IOException;
+import java.util.List;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -37,11 +44,40 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
      */
     @Override
     public void onMapReady(GoogleMap googleMap) {
+
         mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-23.565, -46.6511);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        LatLng posicaoOng = pegaCoordenadaDoEndereco("Rua Guararema 41, Vila Gumercindo, São Paulo");
+        if (posicaoOng != null){
+            CameraUpdate update = CameraUpdateFactory.newLatLngZoom(posicaoOng, 17);
+            googleMap.moveCamera(update);
+        }
+        Ong ong = new Ong();
+            LatLng coordenada = pegaCoordenadaDoEndereco(ong.getEndereco());
+            if (coordenada != null){
+                MarkerOptions marcador = new MarkerOptions();
+                marcador.position(coordenada);
+                marcador.title(ong.getNome());
+                googleMap.addMarker(marcador);
+            }
+
+
+      //  mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
+      //  mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+    }
+
+    private LatLng pegaCoordenadaDoEndereco(String endereco){
+        try {
+            Geocoder geocoder = new Geocoder(getApplicationContext());
+            List<Address> resultados = geocoder.getFromLocationName(endereco, 1);
+            if(!resultados.isEmpty()){
+                LatLng posicao = new LatLng(resultados.get(0).getLatitude(), resultados.get(0).getLongitude());
+                return posicao;
+            }
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+        return null;
     }
 }
