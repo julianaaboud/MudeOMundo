@@ -24,8 +24,8 @@
                     android:id="@+id/nomeId"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="text"
-                    android:hint="Nome: " />
+                    android:hint="@string/nome"
+                    android:inputType="text" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -37,8 +37,8 @@
                     android:id="@+id/dtNascId"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="date"
-                    android:hint="Nascimento: " />
+                    android:hint="@string/nascimento"
+                    android:inputType="date" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -51,8 +51,8 @@
 
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="number"
-                    android:hint="CEP: " />
+                    android:hint="@string/cep"
+                    android:inputType="number" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -64,8 +64,8 @@
                     android:id="@+id/cidadeId"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="text"
-                    android:hint="Cidade: " />
+                    android:hint="@string/cidade"
+                    android:inputType="text" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -77,8 +77,8 @@
                     android:id="@+id/estadoId"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="text"
-                    android:hint="Estado: " />
+                    android:hint="@string/estado"
+                    android:inputType="text" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -90,8 +90,8 @@
                     android:id="@+id/telefoneId"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="number"
-                    android:hint="Telefone: " />
+                    android:hint="@string/telefone"
+                    android:inputType="number" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -106,7 +106,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Sexo: "
+                    android:text="@string/sexo"
                     android:textSize="18sp" />
 
                 <RadioGroup
@@ -119,20 +119,19 @@
                         android:id="@+id/femId"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Feminino"
-                        />
+                        android:text="@string/feminino" />
 
                     <RadioButton
                         android:id="@+id/mascId"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Masculino" />
+                        android:text="@string/masculino" />
 
                     <RadioButton
                         android:id="@+id/outroId"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Outro" />
+                        android:text="@string/outro" />
 
                 </RadioGroup>
 
@@ -146,8 +145,8 @@
                     android:id="@+id/emailId"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textEmailAddress"
-                    android:hint="E-mail: " />
+                    android:hint="@string/email"
+                    android:inputType="textEmailAddress" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -159,8 +158,8 @@
                     android:id="@+id/senhaId"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textPassword"
-                    android:hint="Senha: " />
+                    android:hint="@string/senha"
+                    android:inputType="textPassword" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -175,56 +174,56 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Causas: "
+                    android:text="@string/causas"
                     android:textSize="18sp" />
 
                 <CheckBox
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:padding="4dp"
-                    android:text="Animal"
                     android:id="@+id/animalId"
-                    android:onClick="onCheckboxClicked"/>
-
-                <CheckBox
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:onClick="onCheckboxClicked"
                     android:padding="4dp"
-                    android:text="Criança"
+                    android:text="@string/animal" />
+
+                <CheckBox
                     android:id="@+id/criancaId"
-                    android:onClick="onCheckboxClicked"/>
-
-                <CheckBox
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:onClick="onCheckboxClicked"
                     android:padding="4dp"
-                    android:text="Idoso"
+                    android:text="@string/crianca" />
+
+                <CheckBox
                     android:id="@+id/idosoId"
-                    android:onClick="onCheckboxClicked"/>
-
-                <CheckBox
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:onClick="onCheckboxClicked"
                     android:padding="4dp"
-                    android:text="Refugiado"
+                    android:text="@string/idoso" />
+
+                <CheckBox
                     android:id="@+id/refugiadoId"
-                    android:onClick="onCheckboxClicked"/>
-
-                <CheckBox
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:onClick="onCheckboxClicked"
                     android:padding="4dp"
-                    android:text="Meio Ambiente"
+                    android:text="@string/refugiado" />
+
+                <CheckBox
                     android:id="@+id/meioAmbienteId"
-                    android:onClick="onCheckboxClicked"/>
-
-                <CheckBox
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:onClick="onCheckboxClicked"
                     android:padding="4dp"
-                    android:text="Empoderamento Feminino"
+                    android:text="@string/meioAmbiente" />
+
+                <CheckBox
                     android:id="@+id/empoderamentoFemininoId"
-                    android:onClick="onCheckboxClicked"/>
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:onClick="onCheckboxClicked"
+                    android:padding="4dp"
+                    android:text="@string/empoderamentoFeminino" />
 
                 <CheckBox
                     android:layout_width="match_parent"

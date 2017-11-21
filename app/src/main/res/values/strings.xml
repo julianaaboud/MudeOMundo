@@ -18,6 +18,36 @@
     <string name="title_activity_maps">Map</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="busca_localizacao">Buscar pela minha localização</string>
+    <string name="busca_nome">Buscar por Nome</string>
+    <string name="nome">Nome:</string>
+    <string name="nascimento">Data de Nascimento:</string>
+    <string name="cep">CEP:</string>
+    <string name="cidade">Cidade:</string>
+    <string name="estado">Estado:</string>
+    <string name="telefone">Telefone:</string>
+    <string name="sexo">Sexo:</string>
+    <string name="feminino">Feminino</string>
+    <string name="masculino">Masculino</string>
+    <string name="outro">Outro</string>
+    <string name="email">E-mail:</string>
+    <string name="senha">Senha:</string>
+    <string name="causas">Causas:</string>
+    <string name="animal">Animal</string>
+    <string name="crianca">Criança</string>
+    <string name="idoso">Idoso</string>
+    <string name="refugiado">Refugiado</string>
+    <string name="meioAmbiente">Meio Ambiente</string>
+    <string name="empoderamentoFeminino">Empoderamento Feminino</string>
+    <string name="usuario">Usuário:</string>
+    <string name="logar">Logar</string>
+    <string name="buscarOng">Buscar ONG</string>
+    <string name="acaoVoluntaria">Ação Voluntária</string>
+    <string name="login">Login</string>
+    <string name="cadastro">Não é cadastrado ainda? Cadastre-se</string>
+    <string name="data">Data:</string>
+    <string name="endereco">Endereço:</string>
+    <string name="proposito">Propósito:</string>
+    <string name="cnpj">CNPJ:</string>
 
 </resources>

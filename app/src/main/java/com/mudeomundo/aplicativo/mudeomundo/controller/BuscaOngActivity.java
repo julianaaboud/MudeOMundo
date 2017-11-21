@@ -160,6 +160,7 @@ public class BuscaOngActivity extends AppCompatActivity {
         final TextView email;
         final TextView status;
 
+
         public NossoViewHolder(View view) {
             super(view);
             nome = (TextView) view.findViewById(R.id.textViewRecyclerNome);

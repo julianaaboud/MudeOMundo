@@ -5,7 +5,6 @@
     android:orientation="vertical">
 
 
-
     <Button
         android:id="@+id/botaoBuscaLocalizacaoAtual"
         android:layout_width="match_parent"
@@ -15,9 +14,8 @@
         android:layout_gravity="center_vertical"
         android:layout_marginBottom="26dp"
         android:gravity="center_vertical"
-        android:text="Buscar pela minha localização"
-        android:textAlignment="center"
-        />
+        android:text="@string/busca_localizacao"
+        android:textAlignment="center" />
 
 
 
@@ -36,7 +34,7 @@
         android:layout_centerHorizontal="true"
         android:layout_gravity="center_vertical"
         android:layout_marginBottom="78dp"
-        android:text="Buscar"
+        android:text="@string/busca_nome"
         android:textAlignment="center" />
 
         <ListView

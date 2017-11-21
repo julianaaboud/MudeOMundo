@@ -21,26 +21,26 @@
         android:id="@+id/textViewUsuarioId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Usuário:"
+        android:layout_alignLeft="@+id/textViewPasswordId"
+        android:layout_alignStart="@+id/textViewPasswordId"
+        android:layout_alignTop="@+id/editTextNomeId"
+        android:text="@string/usuario"
         android:textSize="24sp"
         tools:layout_editor_absoluteX="50dp"
-        tools:layout_editor_absoluteY="241dp"
-        android:layout_alignTop="@+id/editTextNomeId"
-        android:layout_alignLeft="@+id/textViewPasswordId"
-        android:layout_alignStart="@+id/textViewPasswordId" />
+        tools:layout_editor_absoluteY="241dp" />
 
     <TextView
         android:id="@+id/textViewPasswordId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Senha:"
-        android:textSize="24sp"
-        tools:layout_editor_absoluteX="50dp"
-        tools:layout_editor_absoluteY="330dp"
         android:layout_alignBaseline="@+id/editTextPasswordId"
         android:layout_alignBottom="@+id/editTextPasswordId"
         android:layout_toLeftOf="@+id/buttonLogarId"
-        android:layout_toStartOf="@+id/buttonLogarId" />
+        android:layout_toStartOf="@+id/buttonLogarId"
+        android:text="@string/senha"
+        android:textSize="24sp"
+        tools:layout_editor_absoluteX="50dp"
+        tools:layout_editor_absoluteY="330dp" />
 
     <EditText
         android:id="@+id/editTextNomeId"
@@ -74,10 +74,10 @@
         android:id="@+id/buttonLogarId"
         android:layout_width="149dp"
         android:layout_height="53dp"
-        android:text="Logar"
-        tools:layout_editor_absoluteX="118dp"
-        tools:layout_editor_absoluteY="418dp"
         android:layout_below="@+id/editTextPasswordId"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="54dp" />
+        android:layout_marginTop="54dp"
+        android:text="@string/logar"
+        tools:layout_editor_absoluteX="118dp"
+        tools:layout_editor_absoluteY="418dp" />
 </RelativeLayout>

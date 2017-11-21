@@ -14,10 +14,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nome:"
-            android:padding="8dp"
             android:layout_gravity="center"
-            android:textSize="18sp"/>
+            android:padding="8dp"
+            android:text="@string/nome"
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/nomeTextViewUsuarioLogado"
@@ -40,10 +40,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="E-mail:"
-            android:padding="8dp"
             android:layout_gravity="center"
-            android:textSize="18sp"/>
+            android:padding="8dp"
+            android:text="@string/email"
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/emailTextViewUsuarioLogado"
@@ -75,10 +75,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="CEP:"
-            android:padding="8dp"
             android:layout_gravity="center"
-            android:textSize="18sp"/>
+            android:padding="8dp"
+            android:text="@string/cep"
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/cepTextViewUsuarioLogado"
@@ -99,10 +99,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Cidade:"
-            android:padding="8dp"
             android:layout_gravity="center"
-            android:textSize="18sp"/>
+            android:padding="8dp"
+            android:text="@string/cidade"
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/cidadeTextViewUsuarioLogado"
@@ -123,10 +123,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Estado:"
-            android:padding="8dp"
             android:layout_gravity="center"
-            android:textSize="18sp"/>
+            android:padding="8dp"
+            android:text="@string/estado"
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/estadoTextViewUsuarioLogado"
@@ -147,10 +147,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Telefone:"
-            android:padding="8dp"
             android:layout_gravity="center"
-            android:textSize="18sp"/>
+            android:padding="8dp"
+            android:text="@string/telefone"
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/telefoneTextViewUsuarioLogado"
