@@ -18,7 +18,6 @@ import static android.R.attr.key;
  */
 
 public class Ong {
-    private String id;
     private String nome;
     private String endereco;
     private String cep;
@@ -57,14 +56,6 @@ public static Ong getInstance (){
 }
 
     @Exclude
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
     public String getNome() {
         return nome;
     }
@@ -148,7 +139,6 @@ public static Ong getInstance (){
     @Override
     public String toString() {
         return "Ong{" +
-                "id='" + id + '\'' +
                 ", nome='" + nome + '\'' +
                 ", endereco='" + endereco + '\'' +
                 ", cep='" + cep + '\'' +

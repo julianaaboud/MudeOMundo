@@ -31,9 +31,9 @@ public class BuscaOngActivity extends AppCompatActivity {
     private ListView listaOng;
     private static String TAG = BuscaOngActivity.class.getName();
     private List<Ong> listOng;
-    private RecyclerView recyclerView;
-    private RecyclerView.Adapter mAdapter;
-    private RecyclerView.LayoutManager mLayoutManager;
+    private RecyclerView recyclerViewOng;
+   // private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager ongLayoutManager;
     private OngAdapter ongAdapter;
 
 
@@ -43,12 +43,12 @@ public class BuscaOngActivity extends AppCompatActivity {
         setContentView(R.layout.activity_busca_ong);
         listaOng = (ListView) findViewById(R.id.listViewId);
         nomeOng = (EditText) findViewById(R.id.searchId);
-        recyclerView = (RecyclerView) findViewById(R.id.recycler);
+        recyclerViewOng = (RecyclerView) findViewById(R.id.recycler);
         listOng = new ArrayList<>();
 
         //Setando Geranciador de Layout
-        mLayoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(mLayoutManager);
+        ongLayoutManager = new LinearLayoutManager(this);
+        recyclerViewOng.setLayoutManager(ongLayoutManager);
 
         botaoBuscaMinhaLocalizacao = (Button) findViewById(R.id.botaoBuscaLocalizacaoAtual);
         botaoBuscaMinhaLocalizacao.setOnClickListener(new View.OnClickListener() {
@@ -64,7 +64,6 @@ public class BuscaOngActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 buscaListaDeOngs();
-
             }
         });
     }
@@ -105,7 +104,7 @@ public class BuscaOngActivity extends AppCompatActivity {
 
         //Setando Adapter
         ongAdapter = new OngAdapter(this, listOng);
-        recyclerView.setAdapter(ongAdapter);
+        recyclerViewOng.setAdapter(ongAdapter);
     }
 
     //Criando o adapter
@@ -116,17 +115,10 @@ public class BuscaOngActivity extends AppCompatActivity {
 
 }
 
-
-
-
-
         /*       buscaQuery.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-
-
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-
                     Log.d(TAG, "DataSnapshot: " + postSnapshot.getKey());
 
                      Ong ong = postSnapshot.getValue(Ong.class);
@@ -135,9 +127,7 @@ public class BuscaOngActivity extends AppCompatActivity {
 
                     if (ong.getNome().equals(nomeOng.getText().toString())) {
                         Log.d(TAG, "DataSnapshot ACHOU A ONG: " + ong.getNome());
-
                         arrayDeOng.add(ong);
-
                         return;
                     }
                 }

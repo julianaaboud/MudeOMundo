@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView botaoLogin;
     private DatabaseReference referenciaFirebase;
     private Button botaoOng;
-
+    private Button botaoAcao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +39,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this, BuscaOngActivity.class));
+            }
+        });
+
+        botaoAcao = (Button) findViewById(R.id.buttonAçãoVoluntariaId);
+        botaoAcao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, BuscaAcaoActivity.class));
             }
         });
 
