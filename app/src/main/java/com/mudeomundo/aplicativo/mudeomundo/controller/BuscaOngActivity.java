@@ -5,22 +5,14 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
 import com.mudeomundo.aplicativo.mudeomundo.R;
-import com.mudeomundo.aplicativo.mudeomundo.config.ConfiguracaoFirebase;
 import com.mudeomundo.aplicativo.mudeomundo.model.Ong;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class BuscaOngActivity extends AppCompatActivity {
@@ -44,7 +36,11 @@ public class BuscaOngActivity extends AppCompatActivity {
         listaOng = (ListView) findViewById(R.id.listViewId);
         nomeOng = (EditText) findViewById(R.id.searchId);
         recyclerViewOng = (RecyclerView) findViewById(R.id.recycler);
-        listOng = new ArrayList<>();
+        listOng = Ong.getInstance().getOngList();
+
+        //Setando Adapter
+        ongAdapter = new OngAdapter(this, listOng);
+        recyclerViewOng.setAdapter(ongAdapter);
 
         //Setando Geranciador de Layout
         ongLayoutManager = new LinearLayoutManager(this);
@@ -63,12 +59,18 @@ public class BuscaOngActivity extends AppCompatActivity {
         botaoBuscaNome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                buscaListaDeOngs();
+             //   buscaListaDeOngs();
             }
         });
     }
 
-    public void buscaListaDeOngs() {
+    @Override
+    protected void onResume(){
+        super.onResume();
+        ongAdapter.notifyDataSetChanged();
+    }
+
+  /*  public void buscaListaDeOngs() {
         //Busca no Firebase
         final DatabaseReference referenciaFirebase = ConfiguracaoFirebase.getFirebase();
         Query buscaQuery = referenciaFirebase.child("ong");
@@ -88,24 +90,20 @@ public class BuscaOngActivity extends AppCompatActivity {
 
             }
 
-            /*   for (DataSnapshot postSnapshot: dataSnapshot.getChildren()){
+            *//*   for (DataSnapshot postSnapshot: dataSnapshot.getChildren()){
                    Log.d(TAG, "DataSnapshot nome digitado: " + nomeOng.getText());
 
                 if (ong.getNome().equals(nomeOng.getText().toString())) {
                     Log.d(TAG, "DataSnapshot ACHOU A ONG: " + ong.getNome());
 
-                }*/
+                }*//*
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 Log.d(TAG, "loadPost:onCancelled", databaseError.toException());
             }
         });
 
-
-        //Setando Adapter
-        ongAdapter = new OngAdapter(this, listOng);
-        recyclerViewOng.setAdapter(ongAdapter);
-    }
+    }*/
 
     //Criando o adapter
     //ArrayAdapter<Ong> adaptador = new ArrayAdapter<Ong>(this, simple_list_item_1, arrayDeOng);

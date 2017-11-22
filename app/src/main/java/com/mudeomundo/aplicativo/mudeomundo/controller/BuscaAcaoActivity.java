@@ -29,16 +29,25 @@ public class BuscaAcaoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_busca_acao);
-
         recyclerViewAcao = (RecyclerView) findViewById(R.id.recyclerAcao);
         listAcao = new ArrayList<>();
-        buscaListaDeAcoes();
+
+        //Setando Adapter
+        acaoAdapter = new AcaoAdapter(this, listAcao);
+        recyclerViewAcao.setAdapter(acaoAdapter);
 
         //Setando Geranciador de Layout
         acaoLayoutManager = new LinearLayoutManager(this);
         recyclerViewAcao.setLayoutManager(acaoLayoutManager);
+
+        buscaListaDeAcoes();
     }
 
+    @Override
+    protected void onResume(){
+        super.onResume();
+        acaoAdapter.notifyDataSetChanged();
+    }
 
     public void buscaListaDeAcoes() {
         //Busca no Firebase
@@ -57,17 +66,15 @@ public class BuscaAcaoActivity extends AppCompatActivity {
                     Acao acao = postSnapshot.getValue(Acao.class);
                     listAcao.add(acao);
                 }
-                Log.d(TAG, "DataSnapshot acao: " + listAcao);
+        //      Log.d(TAG, "DataSnapshot acao: " + listAcao);
             }
+
+
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 Log.d(TAG, "loadPost:onCancelled", databaseError.toException());
             }
         });
-
-        //Setando Adapter
-        acaoAdapter = new AcaoAdapter(this, listAcao);
-        recyclerViewAcao.setAdapter(acaoAdapter);
     }
 }

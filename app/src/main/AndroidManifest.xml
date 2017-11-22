@@ -25,7 +25,6 @@
         </activity>
         <activity android:name=".controller.LoginActivity" />
         <activity android:name=".controller.CadastroUsuarioActivity" />
-        <activity android:name=".MainActivityLogado" />
         <activity
             android:name=".controller.UsuarioLogadoActivity"
             android:label="@string/title_activity_usuario_logado"

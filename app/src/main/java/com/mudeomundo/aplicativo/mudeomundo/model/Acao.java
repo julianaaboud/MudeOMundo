@@ -6,9 +6,8 @@ import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.Exclude;
 import com.mudeomundo.aplicativo.mudeomundo.config.ConfiguracaoFirebase;
-
-import static android.R.attr.id;
 
 /**
  * Created by Juliana on 07/11/2017.
@@ -24,7 +23,6 @@ public class Acao {
     private String proposito;
     private String email;
     private String telefone;
-    private boolean status;
     private static Acao instance;
     private static String TAG = Acao.class.getName();
 
@@ -45,6 +43,10 @@ public class Acao {
 
     }
 
+    @Exclude
+    public static Acao getInstance (){
+        return instance == null ? instance = new Acao() : instance;
+    }
 
     public String getNome() {
         return nome;
@@ -130,7 +132,6 @@ public class Acao {
                 ", proposito='" + proposito + '\'' +
                 ", email='" + email + '\'' +
                 ", telefone='" + telefone + '\'' +
-                ", status=" + status +
                 '}';
     }
 }

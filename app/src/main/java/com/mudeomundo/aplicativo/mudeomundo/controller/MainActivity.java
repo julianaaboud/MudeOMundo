@@ -7,9 +7,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.mudeomundo.aplicativo.mudeomundo.R;
 import com.mudeomundo.aplicativo.mudeomundo.config.ConfiguracaoFirebase;
+import com.mudeomundo.aplicativo.mudeomundo.model.Ong;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private DatabaseReference referenciaFirebase;
     private Button botaoOng;
     private Button botaoAcao;
+    private List<Ong> listOng = Ong.getInstance().getOngList();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         botaoOng.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                buscaListaDeOngs();
                 startActivity(new Intent(MainActivity.this, BuscaOngActivity.class));
             }
         });
@@ -54,6 +63,28 @@ public class MainActivity extends AppCompatActivity {
     public void abrirCadastroUsuario(View view) {
         Intent intent = new Intent(MainActivity.this, CadastroUsuarioActivity.class);
         startActivity(intent);
+    }
+
+    public void buscaListaDeOngs() {
+        //Busca no Firebase
+        final DatabaseReference referenciaFirebase = ConfiguracaoFirebase.getFirebase();
+        Query buscaQuery = referenciaFirebase.child("ong");
+
+        //Snapshot
+        buscaQuery.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                    Ong ong = postSnapshot.getValue(Ong.class);
+                    listOng.add(ong);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
+
     }
 
 }

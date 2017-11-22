@@ -64,8 +64,8 @@ public class AcaoViewHolder extends RecyclerView.ViewHolder {
         cep.setText(cepText);
     }
 
-    public void setData(String cnpjText) {
-        data.setText(cnpjText);
+    public void setData(String dataText) {
+        data.setText(dataText);
     }
 
     public void setProposito(String propositoText) {
