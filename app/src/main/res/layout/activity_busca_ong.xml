@@ -12,7 +12,7 @@
         android:layout_alignLeft="@+id/botaoOutraLocalizacao"
         android:layout_alignStart="@+id/botaoOutraLocalizacao"
         android:layout_gravity="center_vertical"
-        android:layout_marginBottom="26dp"
+        android:layout_marginBottom="6dp"
         android:gravity="center_vertical"
         android:text="@string/busca_localizacao"
         android:textAlignment="center" />
@@ -33,90 +33,21 @@
         android:layout_above="@+id/botaoBuscaLocalizacaoAtual"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center_vertical"
-        android:layout_marginBottom="78dp"
+        android:layout_marginBottom="8dp"
         android:text="@string/busca_nome"
         android:textAlignment="center" />
 
         <ListView
         android:id="@+id/listViewId"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
-
-
-    <android.support.design.widget.CoordinatorLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
+        android:layout_height="match_parent"
+        android:visibility="gone"/>
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler"
             android:layout_width="match_parent"
-            android:scrollbars="vertical"
-            android:layout_height="match_parent" />
-
-            <TextView
-                android:id="@+id/textViewRecyclerNome"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
-
-            <TextView
-                android:id="@+id/textViewRecyclerTelefone"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
-
-            <TextView
-                android:id="@+id/textViewRecyclerEndereco"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
-
-            <TextView
-                android:id="@+id/textViewRecyclerCidade"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
-
-            <TextView
-                android:id="@+id/textViewRecyclerEstado"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
-
-            <TextView
-                android:id="@+id/textViewRecyclerCep"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
-
-            <TextView
-                android:id="@+id/textViewRecyclerCnpj"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
-
-            <TextView
-                android:id="@+id/textViewRecyclerProposito"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
-
-            <TextView
-                android:id="@+id/textViewRecyclerEmail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
-
-            <TextView
-                android:id="@+id/textViewRecyclerStatus"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
-
-    </android.support.design.widget.CoordinatorLayout>
+            android:layout_height="match_parent"
+            android:padding="8dp"
+            android:scrollbars="vertical"/>
 
 </LinearLayout>

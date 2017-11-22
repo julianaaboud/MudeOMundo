@@ -4,6 +4,7 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -21,6 +22,7 @@ import java.util.List;
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
+    private static String TAG = MapsActivity.class.getName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +56,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             googleMap.moveCamera(update);
         }
         Ong ong = new Ong();
+
+        Log.d(TAG, " ENDERECO >>>>>> " + ong.getEndereco());
             LatLng coordenada = pegaCoordenadaDoEndereco(ong.getEndereco());
             if (coordenada != null){
                 MarkerOptions marcador = new MarkerOptions();
@@ -68,15 +72,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     private LatLng pegaCoordenadaDoEndereco(String endereco){
+
         try {
             Geocoder geocoder = new Geocoder(getApplicationContext());
-            List<Address> resultados = geocoder.getFromLocationName(endereco, 1);
+            List<Address> resultados = geocoder.getFromLocationName("Rua Guararema 41, Vila Gumercindo, São Paulo", 1);
             if(!resultados.isEmpty()){
                 LatLng posicao = new LatLng(resultados.get(0).getLatitude(), resultados.get(0).getLongitude());
                 return posicao;
             }
         }catch (IOException e){
-            e.printStackTrace();
+            Log.d (TAG, e.getMessage());
         }
         return null;
     }

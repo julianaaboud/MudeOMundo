@@ -1,19 +1,15 @@
 package com.mudeomundo.aplicativo.mudeomundo.controller;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -34,11 +30,11 @@ public class BuscaOngActivity extends AppCompatActivity {
     private EditText nomeOng;
     private ListView listaOng;
     private static String TAG = BuscaOngActivity.class.getName();
-    ArrayList<Ong> arrayDeOng = new ArrayList<>();
-    private List<Ong> listOng ;
+    private List<Ong> listOng;
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
+    private OngAdapter ongAdapter;
 
 
     @Override
@@ -48,14 +44,11 @@ public class BuscaOngActivity extends AppCompatActivity {
         listaOng = (ListView) findViewById(R.id.listViewId);
         nomeOng = (EditText) findViewById(R.id.searchId);
         recyclerView = (RecyclerView) findViewById(R.id.recycler);
+        listOng = new ArrayList<>();
 
         //Setando Geranciador de Layout
         mLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(mLayoutManager);
-
-        //Setando Adapter
-        recyclerView.setAdapter(new NossoAdapter(listOng, this));
-
 
         botaoBuscaMinhaLocalizacao = (Button) findViewById(R.id.botaoBuscaLocalizacaoAtual);
         botaoBuscaMinhaLocalizacao.setOnClickListener(new View.OnClickListener() {
@@ -70,115 +63,62 @@ public class BuscaOngActivity extends AppCompatActivity {
         botaoBuscaNome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                buscaListaDeOngs();
 
             }
         });
+    }
 
+    public void buscaListaDeOngs() {
         //Busca no Firebase
         final DatabaseReference referenciaFirebase = ConfiguracaoFirebase.getFirebase();
         Query buscaQuery = referenciaFirebase.child("ong");
 
         //Snapshot
         buscaQuery.addValueEventListener(new ValueEventListener() {
-                                             @Override
-                                             public void onDataChange(DataSnapshot dataSnapshot) {
-                                                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-                                                    //Query ongQuery = referenciaFirebase.child("ong").orderByChild("nome").limitToFirst(10);
-                                                    //Log.d(TAG, "DataSnapshot ongQuery: " + ongQuery);
-                                                    //String name = (String) postSnapshot.child("nome").getValue();
-                                                    //Log.d(TAG, "DataSnapshot name: " + name);
-                                                     Ong ong = postSnapshot.getValue(Ong.class);
-                                                     arrayDeOng.add(ong);
-                                                     listOng = arrayDeOng;
-                                                 }
-                                                 Log.d(TAG, "DataSnapshot arrayDeOng: " + arrayDeOng);
-                                             }
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                    //Query ongQuery = referenciaFirebase.child("ong").orderByChild("nome").limitToFirst(10);
+                    //Log.d(TAG, "DataSnapshot ongQuery: " + ongQuery);
+                    //String name = (String) postSnapshot.child("nome").getValue();
+                    //Log.d(TAG, "DataSnapshot name: " + name);
+                    Ong ong = postSnapshot.getValue(Ong.class);
+                    listOng.add(ong);
+                }
 
-                                             /*   for (DataSnapshot postSnapshot: dataSnapshot.getChildren()){
-                                                    Log.d(TAG, "DataSnapshot nome digitado: " + nomeOng.getText());
+            }
 
-                                                 if (ong.getNome().equals(nomeOng.getText().toString())) {
-                                                     Log.d(TAG, "DataSnapshot ACHOU A ONG: " + ong.getNome());
+            /*   for (DataSnapshot postSnapshot: dataSnapshot.getChildren()){
+                   Log.d(TAG, "DataSnapshot nome digitado: " + nomeOng.getText());
 
-                                                 }*/
+                if (ong.getNome().equals(nomeOng.getText().toString())) {
+                    Log.d(TAG, "DataSnapshot ACHOU A ONG: " + ong.getNome());
+
+                }*/
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 Log.d(TAG, "loadPost:onCancelled", databaseError.toException());
             }
         });
 
-        //Recebendo os dados do banco
-        listOng = arrayDeOng;
 
-
-        //Criando o adapter
-        //ArrayAdapter<Ong> adaptador = new ArrayAdapter<Ong>(this, simple_list_item_1, arrayDeOng);
-
-        //Vinculando o adaptador ao listview
-        //listaOng.setAdapter(adaptador);
-
-    }
-    public class NossoAdapter extends RecyclerView.Adapter{
-        private List<Ong> listOng;
-        private Context context;
-        private String[] mDataset;
-
-        public NossoAdapter(List<Ong> listOng, BuscaOngActivity buscaOngActivity){
-            this.listOng = listOng;
-            this.context = context;
-        }
-
-        @Override
-        public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(context)
-                    .inflate(R.layout.activity_busca_ong, parent, false);
-            NossoViewHolder holder = new NossoViewHolder(view);
-            return holder;
-        }
-
-        @Override
-        public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int position) {
-        }
-
-        @Override
-        public int getItemCount() {
-            return listOng.size();
-        }
+        //Setando Adapter
+        ongAdapter = new OngAdapter(this, listOng);
+        recyclerView.setAdapter(ongAdapter);
     }
 
+    //Criando o adapter
+    //ArrayAdapter<Ong> adaptador = new ArrayAdapter<Ong>(this, simple_list_item_1, arrayDeOng);
 
-
-    public class NossoViewHolder extends RecyclerView.ViewHolder {
-        final TextView nome;
-        final TextView telefone;
-        final TextView endereco;
-        final TextView cidade;
-        final TextView estado;
-        final TextView cep;
-        final TextView cnpj;
-        final TextView proposito;
-        final TextView email;
-        final TextView status;
-
-
-        public NossoViewHolder(View view) {
-            super(view);
-            nome = (TextView) view.findViewById(R.id.textViewRecyclerNome);
-            telefone = (TextView) view.findViewById(R.id.textViewRecyclerTelefone);
-            endereco = (TextView) view.findViewById(R.id.textViewRecyclerEndereco);
-            cidade = (TextView) view.findViewById(R.id.textViewRecyclerCidade);
-            estado = (TextView) view.findViewById(R.id.textViewRecyclerEstado);
-            cep = (TextView) view.findViewById(R.id.textViewRecyclerCep);
-            cnpj = (TextView) view.findViewById(R.id.textViewRecyclerCnpj);
-            proposito = (TextView) view.findViewById(R.id.textViewRecyclerProposito);
-            email = (TextView) view.findViewById(R.id.textViewRecyclerEmail);
-            status = (TextView) view.findViewById(R.id.textViewRecyclerStatus);
-        }
-    }
-
-
+    //Vinculando o adaptador ao listview
+    //listaOng.setAdapter(adaptador);
 
 }
+
+
+
+
 
         /*       buscaQuery.addValueEventListener(new ValueEventListener() {
             @Override

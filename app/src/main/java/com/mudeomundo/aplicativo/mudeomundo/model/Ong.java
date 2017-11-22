@@ -9,6 +9,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.Exclude;
 import com.mudeomundo.aplicativo.mudeomundo.config.ConfiguracaoFirebase;
 
+import java.util.List;
+
 import static android.R.attr.key;
 
 /**
@@ -28,6 +30,7 @@ public class Ong {
     private String telefone;
     private boolean status;
     private static Ong instance;
+    private static List<Ong> ongList;
     private static String TAG = Ong.class.getName();
 
     public Ong() {
@@ -158,4 +161,13 @@ public static Ong getInstance (){
                 ", status=" + status +
                 '}';
     }
+
+    public static List<Ong> getOngList() {
+        return ongList;
+    }
+
+    public static void setOngList(List<Ong> ongList) {
+        Ong.ongList = ongList;
+    }
+
 }
