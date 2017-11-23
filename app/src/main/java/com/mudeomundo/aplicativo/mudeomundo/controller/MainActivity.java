@@ -3,6 +3,7 @@ package com.mudeomundo.aplicativo.mudeomundo.controller;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private Button botaoOng;
     private Button botaoAcao;
     private List<Ong> listOng = Ong.getInstance().getOngList();
+    private static String TAG = MainActivity.class.getName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                     Ong ong = postSnapshot.getValue(Ong.class);
+                    Log.d(TAG, "ong: " + ong.getNome());
                     listOng.add(ong);
                 }
             }

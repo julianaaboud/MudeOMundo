@@ -39,6 +39,7 @@ public class OngViewHolder extends RecyclerView.ViewHolder {
             email = (TextView) view.findViewById(R.id.textViewRecyclerEmail);
         }
 
+
     public void setNome(String nomeText) {
         nome.setText(nomeText);
     }
@@ -50,7 +51,6 @@ public class OngViewHolder extends RecyclerView.ViewHolder {
     public void setEndereco(String enderecoText) {
         endereco.setText(enderecoText);
     }
-
     public void setCidade(String cidadeText) {
         cidade.setText(cidadeText);
     }
@@ -73,10 +73,6 @@ public class OngViewHolder extends RecyclerView.ViewHolder {
 
     public void setEmail(String emailText) {
        email.setText(emailText);
-    }
-
-    public void setStatus(String statusText) {
-        status.setText(statusText);
     }
 
 }

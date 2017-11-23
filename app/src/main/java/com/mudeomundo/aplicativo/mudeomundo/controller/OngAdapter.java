@@ -2,6 +2,7 @@ package com.mudeomundo.aplicativo.mudeomundo.controller;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,8 +20,8 @@ import java.util.List;
 public class OngAdapter extends RecyclerView.Adapter {
     private List<Ong> listOng;
     private Context context;
-    private String[] mDataset;
     private final int ONG = 0;
+    private static String TAG = OngAdapter.class.getName();
 
 
     public OngAdapter(Context context, List<Ong> listOng) {
@@ -59,6 +60,7 @@ public class OngAdapter extends RecyclerView.Adapter {
 
     public void setOngViewHolder(OngViewHolder ongViewHolder, int position) {
         Ong ong = listOng.get(position);
+        Log.d(TAG, "setOngViewHolder: " + ong.getNome());
         ongViewHolder.setNome(ong.getNome());
         ongViewHolder.setEmail(ong.getEmail());
         ongViewHolder.setCep(ong.getCep());
@@ -69,6 +71,7 @@ public class OngAdapter extends RecyclerView.Adapter {
         ongViewHolder.setEstado(ong.getEstado());
         ongViewHolder.setProposito(ong.getProposito());
         ongViewHolder.setEmail(ong.getEmail());
+        Log.d(TAG, "setOngViewHolder: Email" + ong.getEmail());
     }
 }
 

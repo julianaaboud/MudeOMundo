@@ -57,7 +57,6 @@ public static Ong getInstance (){
         return instance == null ? instance = new Ong() : instance;
 }
 
-    @Exclude
     public String getNome() {
         return nome;
     }
@@ -138,12 +137,10 @@ public static Ong getInstance (){
 
     public void setCnpj(String cnpj) { this.cnpj = cnpj; }
 
-
-
     @Override
     public String toString() {
         return "Ong{" +
-                ", nome='" + nome + '\'' +
+                "nome='" + nome + '\'' +
                 ", endereco='" + endereco + '\'' +
                 ", cep='" + cep + '\'' +
                 ", cnpj='" + cnpj + '\'' +
@@ -152,7 +149,6 @@ public static Ong getInstance (){
                 ", proposito='" + proposito + '\'' +
                 ", email='" + email + '\'' +
                 ", telefone='" + telefone + '\'' +
-                ", status=" + status +
                 '}';
     }
 
