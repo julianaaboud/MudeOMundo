@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private List<Ong> listOng = Ong.getInstance().getOngList();
     private static String TAG = MainActivity.class.getName();
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
