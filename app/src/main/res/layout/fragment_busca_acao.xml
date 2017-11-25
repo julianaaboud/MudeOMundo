@@ -4,11 +4,6 @@
     android:layout_height="match_parent"
     tools:context=".model.BuscaAcaoFragment">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Busca Ação" />
-
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerFragmentAcao"
         android:layout_width="match_parent"

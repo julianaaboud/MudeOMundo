@@ -22,7 +22,7 @@ public class BuscaAcaoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_busca_acao);
-        recyclerViewAcao = (RecyclerView) findViewById(R.id.recyclerAcao);
+        recyclerViewAcao = (RecyclerView) findViewById(R.id.recyclerFragmentAcao);
         listAcao = Acao.getInstance().getAcaoList();
 
         //Setando Adapter

@@ -1,18 +1,41 @@
 package com.mudeomundo.aplicativo.mudeomundo.model;
 
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.mudeomundo.aplicativo.mudeomundo.R;
+import com.mudeomundo.aplicativo.mudeomundo.controller.AcaoAdapter;
+
+import java.util.List;
 
 public class BuscaAcaoFragment extends Fragment {
+
+    private AcaoAdapter acaoAdapter;
+    private RecyclerView recyclerViewAcao;
+    private RecyclerView.LayoutManager acaoLayoutManager;
+    private List<Acao> listAcao;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_busca_acao, container, false);
+
+        recyclerViewAcao = (RecyclerView) rootView.findViewById(R.id.recyclerFragmentAcao);
+        listAcao = Acao.getInstance().getAcaoList();
+
+        //Setando Adapter
+        acaoAdapter = new AcaoAdapter(getActivity(), listAcao);
+        recyclerViewAcao.setAdapter(acaoAdapter);
+
+        //Setando Geranciador de Layout
+        acaoLayoutManager = new LinearLayoutManager(getActivity());
+        recyclerViewAcao.setLayoutManager(acaoLayoutManager);
+
         return rootView;
     }
 
