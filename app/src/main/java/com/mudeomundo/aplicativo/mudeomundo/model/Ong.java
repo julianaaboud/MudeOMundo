@@ -52,7 +52,7 @@ public class Ong {
         Log.d (TAG, "log de teste " + key);
     }
     @Exclude
-public static Ong getInstance (){
+    public static Ong getInstance (){
 
         return instance == null ? instance = new Ong() : instance;
 }

@@ -9,6 +9,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.Exclude;
 import com.mudeomundo.aplicativo.mudeomundo.config.ConfiguracaoFirebase;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Juliana on 07/11/2017.
  */
@@ -25,6 +28,7 @@ public class Acao {
     private String telefone;
     private static Acao instance;
     private static String TAG = Acao.class.getName();
+    private static List<Acao> acaoList = new ArrayList<>();
 
     public Acao(){
 
@@ -133,5 +137,13 @@ public class Acao {
                 ", email='" + email + '\'' +
                 ", telefone='" + telefone + '\'' +
                 '}';
+    }
+
+    public static List<Acao> getAcaoList() {
+        return acaoList;
+    }
+
+    public static void setAcaoList(List<Acao> acaoList) {
+        Acao.acaoList = acaoList;
     }
 }

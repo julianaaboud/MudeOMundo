@@ -16,8 +16,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.mudeomundo.aplicativo.mudeomundo.R;
-import com.mudeomundo.aplicativo.mudeomundo.model.InserirAcaoFragment;
+import com.mudeomundo.aplicativo.mudeomundo.model.BuscaAcaoFragment;
 import com.mudeomundo.aplicativo.mudeomundo.model.CausaFragment;
+import com.mudeomundo.aplicativo.mudeomundo.model.InserirAcaoFragment;
 import com.mudeomundo.aplicativo.mudeomundo.model.InserirOngFragment;
 import com.mudeomundo.aplicativo.mudeomundo.model.ProfileFragment;
 import com.mudeomundo.aplicativo.mudeomundo.model.Usuario;
@@ -31,6 +32,8 @@ public class UsuarioLogadoActivity extends AppCompatActivity
     DatabaseReference referenceUsuario;
     private Usuario usuario;
     private Bundle bundle;
+    private Fragment fragment;
+    private FragmentTransaction ft;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +42,9 @@ public class UsuarioLogadoActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         bundle = getIntent().getExtras();
+
+        fragment = new BuscaAcaoFragment();
+
 
 
     /*
@@ -93,6 +99,10 @@ public class UsuarioLogadoActivity extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.usuario_logado, menu);
+        Fragment fragmentAcoes = new BuscaAcaoFragment();
+        FragmentTransaction ft1 = getSupportFragmentManager().beginTransaction();
+        ft1.replace(R.id.content_frame, fragmentAcoes);
+        ft1.commit();
         return true;
     }
 
@@ -142,7 +152,7 @@ public class UsuarioLogadoActivity extends AppCompatActivity
     private void displaySelectedScreen(int itemId) {
 
         //creating fragment object
-        Fragment fragment = null;
+        fragment = new BuscaAcaoFragment();
 
         //initializing the fragment object which is selected
         switch (itemId) {

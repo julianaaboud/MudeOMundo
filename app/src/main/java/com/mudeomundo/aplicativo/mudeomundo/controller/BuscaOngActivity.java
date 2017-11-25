@@ -54,7 +54,6 @@ public class BuscaOngActivity extends AppCompatActivity {
             }
         });
 
-
         botaoBuscaNome = (Button) findViewById(R.id.botaoBuscaNomeId);
         botaoBuscaNome.setOnClickListener(new View.OnClickListener() {
             @Override

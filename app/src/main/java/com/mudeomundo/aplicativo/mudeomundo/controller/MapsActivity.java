@@ -20,12 +20,16 @@ import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.List;
 
+import static com.mudeomundo.aplicativo.mudeomundo.R.id.map;
+
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     private List<Ong> listOng = Ong.getInstance().getOngList();;
     private Array arrayDeOng;
     private static String TAG = MapsActivity.class.getName();
+   // private Usuario usuario = Usuario.getInstance();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,36 +38,33 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
+                .findFragmentById(map);
         mapFragment.getMapAsync(this);
     }
 
-
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
     @Override
     public void onMapReady(GoogleMap googleMap) {
         String enderecoOng;
+        String nomeOng;
+        String telefoneOng;
         //Laço para pegar o endereço
         for (Ong ong: listOng) {
             enderecoOng = ong.getEndereco() + " " + ong.getCidade();
+            nomeOng = ong.getNome();
+            telefoneOng = ong.getTelefone();
             Log.d(TAG, "endereco ong " + enderecoOng);
             LatLng posicaoOngs = pegaCoordenadaDoEndereco(enderecoOng);
             Log.d(TAG, "posicao ong " + posicaoOngs);
-            googleMap.addMarker(new MarkerOptions().position(posicaoOngs));
+            googleMap.addMarker(new MarkerOptions().position(posicaoOngs).title(nomeOng).snippet(telefoneOng));
         }
 
         mMap = googleMap;
 
-        // Add a marker in Sydney and move the camera
-        LatLng posicaoOng = pegaCoordenadaDoEndereco("Rua Guararema 41, Vila Gumercindo, São Paulo");
+
+
+     //   Tentativa de colocar o nome
+    //    String userEnd = usuario.getEndereço();
+        LatLng posicaoOng = pegaCoordenadaDoEndereco("Rua Guararema 41, Vila Gumercindo São Paulo");
         if (posicaoOng != null){
             CameraUpdate update = CameraUpdateFactory.newLatLngZoom(posicaoOng, 10);
             googleMap.moveCamera(update);

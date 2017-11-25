@@ -15,6 +15,7 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.mudeomundo.aplicativo.mudeomundo.R;
 import com.mudeomundo.aplicativo.mudeomundo.config.ConfiguracaoFirebase;
+import com.mudeomundo.aplicativo.mudeomundo.model.Acao;
 import com.mudeomundo.aplicativo.mudeomundo.model.Ong;
 
 import java.util.List;
@@ -22,19 +23,20 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private TextView botaoLogin;
-    private DatabaseReference referenciaFirebase;
     private Button botaoOng;
     private Button botaoAcao;
     private List<Ong> listOng = Ong.getInstance().getOngList();
     private static String TAG = MainActivity.class.getName();
-
+    private List<Acao> listAcao = Acao.getInstance().getAcaoList();
+    private Intent buscaIntent;
+    final DatabaseReference referenciaFirebase = ConfiguracaoFirebase.getFirebase();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        referenciaFirebase = ConfiguracaoFirebase.getFirebase();
+        buscaListaDeAcoes();
+        buscaListaDeOngs();
 
 
       botaoLogin = (TextView) findViewById(R.id.botaoLoginId);
@@ -49,8 +51,9 @@ public class MainActivity extends AppCompatActivity {
         botaoOng.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                buscaListaDeOngs();
-                startActivity(new Intent(MainActivity.this, BuscaOngActivity.class));
+                buscaIntent = new Intent(MainActivity.this, BuscaActivity.class);
+                buscaIntent.putExtra("tela", 1);
+                startActivity(buscaIntent);
             }
         });
 
@@ -58,11 +61,14 @@ public class MainActivity extends AppCompatActivity {
         botaoAcao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, BuscaAcaoActivity.class));
+                buscaIntent = new Intent(MainActivity.this, BuscaActivity.class);
+                buscaIntent.putExtra("tela", 2);
+                startActivity(buscaIntent);
             }
         });
 
     }
+
     public void abrirCadastroUsuario(View view) {
         Intent intent = new Intent(MainActivity.this, CadastroUsuarioActivity.class);
         startActivity(intent);
@@ -70,7 +76,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void buscaListaDeOngs() {
         //Busca no Firebase
-        final DatabaseReference referenciaFirebase = ConfiguracaoFirebase.getFirebase();
         Query buscaQuery = referenciaFirebase.child("ong");
 
         //Snapshot
@@ -88,7 +93,32 @@ public class MainActivity extends AppCompatActivity {
             public void onCancelled(DatabaseError databaseError) {
             }
         });
+    }
 
+    public void buscaListaDeAcoes() {
+        //Busca no Firebase
+        Query buscaQuery = referenciaFirebase.child("acao");
+        Log.d(TAG, "DataSnapshot buscaQuery: " + buscaQuery);
+        //Snapshot
+        buscaQuery.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                    //Query ongQuery = referenciaFirebase.child("ong").orderByChild("nome").limitToFirst(10);
+                    //Log.d(TAG, "DataSnapshot ongQuery: " + ongQuery);
+                    //String name = (String) postSnapshot.child("nome").getValue();
+                    Log.d(TAG, "DataSnapshot postSnapshot: " + postSnapshot);
+                    Acao acao = postSnapshot.getValue(Acao.class);
+                    listAcao.add(acao);
+                }
+                //      Log.d(TAG, "DataSnapshot acao: " + listAcao);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.d(TAG, "loadPost:onCancelled", databaseError.toException());
+            }
+        });
     }
 
 }

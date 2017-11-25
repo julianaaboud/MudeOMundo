@@ -13,6 +13,7 @@ import com.mudeomundo.aplicativo.mudeomundo.config.ConfiguracaoFirebase;
         private String nome;
         private String dt_nasc;
         private String cep;
+        private String endereco;
         private String cidade;
         private String estado;
         private String telefone;
@@ -117,6 +118,14 @@ import com.mudeomundo.aplicativo.mudeomundo.config.ConfiguracaoFirebase;
         this.sexo = sexo;
     }
 
+    public String getEndereço() {
+        return endereco;
+    }
+
+    public void setEndereço(String endereço) {
+        this.endereco = endereço;
+    }
+
     @Override
     public String toString() {
         return "Usuario{" +
@@ -129,6 +138,7 @@ import com.mudeomundo.aplicativo.mudeomundo.config.ConfiguracaoFirebase;
                 ", telefone='" + telefone + '\'' +
                 ", email='" + email + '\'' +
                 ", senha='" + senha + '\'' +
+                ", endereco='" + endereco + '\'' +
                 ", sexo='" + sexo + '\'' +
                 '}';
     }
