@@ -4,11 +4,25 @@
     android:layout_height="match_parent"
     tools:context="com.mudeomundo.aplicativo.mudeomundo.model.BuscaOngFragment">
 
-    <TextView
-        android:id="@+id/buscaTextView"
+    <Button
+        android:id="@+id/botaoBuscaLocalizacaoAtualFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Busca Ong" />
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="6dp"
+        android:gravity="top"
+        android:text="@string/busca_localizacao"
+        android:textAlignment="center" />
+
+    <Button
+        android:id="@+id/botaoBuscaNomeIdFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/botaoBuscaLocalizacaoAtual"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_vertical"
+        android:layout_marginBottom="8dp"
+        android:text="@string/busca_nome"
+        android:textAlignment="center" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerFragmentOng"

@@ -1,23 +1,76 @@
 package com.mudeomundo.aplicativo.mudeomundo.model;
 
-import android.support.v4.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ListView;
 
 import com.mudeomundo.aplicativo.mudeomundo.R;
+import com.mudeomundo.aplicativo.mudeomundo.controller.MapsActivity;
+import com.mudeomundo.aplicativo.mudeomundo.controller.OngAdapter;
+
+import java.util.List;
 
 
 public class BuscaOngFragment extends Fragment {
+    private Button botaoBuscaNome;
+    private Button botaoBuscaMinhaLocalizacao;
+    private EditText nomeOng;
+    private ListView listaOng;
+    private static String TAG = BuscaOngFragment.class.getName();
+    private List<Ong> listOng;
+    private RecyclerView recyclerViewOng;
+    private RecyclerView.LayoutManager ongLayoutManager;
+    private OngAdapter ongAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
         View rootView = inflater.inflate(R.layout.fragment_busca_ong, container, false);
 
+        listaOng = (ListView) rootView.findViewById(R.id.listViewId);
+        nomeOng = (EditText) rootView.findViewById(R.id.searchId);
+        recyclerViewOng = (RecyclerView) rootView.findViewById(R.id.recyclerFragmentOng);
+        listOng = Ong.getInstance().getOngList();
+
+        //Setando Adapter
+        ongAdapter = new OngAdapter(getActivity(), listOng);
+        recyclerViewOng.setAdapter(ongAdapter);
+
+        //Setando Geranciador de Layout
+        ongLayoutManager = new LinearLayoutManager(getActivity());
+        recyclerViewOng.setLayoutManager(ongLayoutManager);
+
+        botaoBuscaMinhaLocalizacao = (Button) rootView.findViewById(R.id.botaoBuscaLocalizacaoAtualFragment);
+        botaoBuscaMinhaLocalizacao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getContext(), MapsActivity.class));
+            }
+        });
+
+        botaoBuscaNome = (Button) rootView.findViewById(R.id.botaoBuscaNomeIdFragment);
+        botaoBuscaNome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //   procurar por nome
+            }
+        });
 
         return rootView;
+    }
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        ongAdapter.notifyDataSetChanged();
     }
 
     /*    // TODO: Rename parameter arguments, choose names that match
