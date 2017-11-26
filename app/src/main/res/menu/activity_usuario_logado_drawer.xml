@@ -18,9 +18,21 @@
             android:id="@+id/nav_inserir_acao"
             android:icon="@drawable/avaliar"
             android:title="Inserir Ação" />
+        <item
+            android:id="@+id/nav_buscar_ong"
+            android:icon="@drawable/voluntario"
+            android:title="Buscar Ong" />
+        <item
+            android:id="@+id/nav_buscar_acao"
+            android:icon="@drawable/voluntario"
+            android:title="Buscar Ação" />
+        <item
+            android:id="@+id/nav_mapa"
+            android:icon="@drawable/voluntario"
+            android:title="Mapa" />
     </group>
 
-    <item android:title="Communicate">
+    <!--<item android:title="Communicate">
         <menu>
             <item
                 android:id="@+id/duvidas"
@@ -31,6 +43,6 @@
                 android:icon="@drawable/information"
                 android:title="Sobre" />
         </menu>
-    </item>
+    </item>-->
 
 </menu>

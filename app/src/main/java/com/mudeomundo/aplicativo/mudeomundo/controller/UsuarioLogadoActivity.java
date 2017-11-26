@@ -1,5 +1,6 @@
 package com.mudeomundo.aplicativo.mudeomundo.controller;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -17,6 +18,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.mudeomundo.aplicativo.mudeomundo.R;
 import com.mudeomundo.aplicativo.mudeomundo.model.BuscaAcaoFragment;
+import com.mudeomundo.aplicativo.mudeomundo.model.BuscaOngFragment;
 import com.mudeomundo.aplicativo.mudeomundo.model.CausaFragment;
 import com.mudeomundo.aplicativo.mudeomundo.model.InserirAcaoFragment;
 import com.mudeomundo.aplicativo.mudeomundo.model.InserirOngFragment;
@@ -168,6 +170,15 @@ public class UsuarioLogadoActivity extends AppCompatActivity
                 break;
             case R.id.nav_inserir_acao:
                 fragment = new InserirAcaoFragment();
+                break;
+            case R.id.nav_buscar_acao:
+                fragment = new BuscaAcaoFragment();
+                break;
+            case R.id.nav_buscar_ong:
+                fragment = new BuscaOngFragment();
+                break;
+            case R.id. nav_mapa:
+                startActivity(new Intent(this, MapsActivity.class));
                 break;
         }
 

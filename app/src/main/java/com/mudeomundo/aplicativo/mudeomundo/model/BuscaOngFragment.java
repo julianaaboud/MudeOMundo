@@ -1,6 +1,5 @@
 package com.mudeomundo.aplicativo.mudeomundo.model;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -13,7 +12,6 @@ import android.widget.EditText;
 import android.widget.ListView;
 
 import com.mudeomundo.aplicativo.mudeomundo.R;
-import com.mudeomundo.aplicativo.mudeomundo.controller.MapsActivity;
 import com.mudeomundo.aplicativo.mudeomundo.controller.OngAdapter;
 
 import java.util.List;
@@ -25,17 +23,18 @@ public class BuscaOngFragment extends Fragment {
     private EditText nomeOng;
     private ListView listaOng;
     private static String TAG = BuscaOngFragment.class.getName();
-    private List<Ong> listOng;
     private RecyclerView recyclerViewOng;
     private RecyclerView.LayoutManager ongLayoutManager;
     private OngAdapter ongAdapter;
+    private List<Ong> listOng = Ong.getInstance().getOngList();
+    private List<Ong> novaListOng;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_busca_ong, container, false);
 
         listaOng = (ListView) rootView.findViewById(R.id.listViewId);
-        nomeOng = (EditText) rootView.findViewById(R.id.searchId);
+        nomeOng = (EditText) rootView.findViewById(R.id.editTextBuscaNomeIdFragment);
         recyclerViewOng = (RecyclerView) rootView.findViewById(R.id.recyclerFragmentOng);
         listOng = Ong.getInstance().getOngList();
 
@@ -47,19 +46,25 @@ public class BuscaOngFragment extends Fragment {
         ongLayoutManager = new LinearLayoutManager(getActivity());
         recyclerViewOng.setLayoutManager(ongLayoutManager);
 
-        botaoBuscaMinhaLocalizacao = (Button) rootView.findViewById(R.id.botaoBuscaLocalizacaoAtualFragment);
-        botaoBuscaMinhaLocalizacao.setOnClickListener(new View.OnClickListener() {
+       /* botaoBuscaMinhaLocalizacao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getContext(), MapsActivity.class));
             }
-        });
+        });*/
 
         botaoBuscaNome = (Button) rootView.findViewById(R.id.botaoBuscaNomeIdFragment);
         botaoBuscaNome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //   procurar por nome
+                for (Ong ong: listOng){
+                    if (botaoBuscaNome.getText() == ong.getNome()){
+                        Ong novaOng = ong;
+                        novaListOng.add(novaOng);
+                    }
+                }
+                ongAdapter = new OngAdapter(getActivity(), novaListOng);
+                ongAdapter.notifyDataSetChanged();
             }
         });
 
