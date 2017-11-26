@@ -4,12 +4,14 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.mudeomundo.aplicativo.mudeomundo.R;
 import com.mudeomundo.aplicativo.mudeomundo.controller.OngAdapter;
@@ -57,13 +59,24 @@ public class BuscaOngFragment extends Fragment {
         botaoBuscaNome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String nomeOngBusca = nomeOng.getText().toString();
+                Log.d(TAG, "nomeOng " + nomeOng.getText().toString());
                 for (Ong ong: listOng){
-                    if (botaoBuscaNome.getText() == ong.getNome()){
+                    Log.d(TAG, "ong listOng " + ong.getNome());
+                    String nomeOngBanco = ong.getNome();
+                    if ( nomeOngBanco == nomeOngBusca){
+                        Log.d(TAG, "entrou no if ");
                         Ong novaOng = ong;
+                        Log.d(TAG, "novaOng " + novaOng);
                         novaListOng.add(novaOng);
+                        Log.d(TAG, "novaList " + novaListOng);
+                    }
+                    else{
+                        Toast.makeText(getActivity(), "Nenhuma ONG foi encontrada", Toast.LENGTH_SHORT).show();
                     }
                 }
                 ongAdapter = new OngAdapter(getActivity(), novaListOng);
+                recyclerViewOng.setAdapter(ongAdapter);
                 ongAdapter.notifyDataSetChanged();
             }
         });

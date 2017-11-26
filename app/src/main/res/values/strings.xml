@@ -19,7 +19,7 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="busca_localizacao">Buscar pela minha localização</string>
-    <string name="busca_nome">Buscar por Nome</string>
+    <string name="busca_nome">Buscar</string>
     <string name="nome">Nome:</string>
     <string name="nascimento">Data de Nascimento:</string>
     <string name="cep">CEP:</string>
