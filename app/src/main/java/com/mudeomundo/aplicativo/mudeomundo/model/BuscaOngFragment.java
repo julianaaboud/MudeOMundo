@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.mudeomundo.aplicativo.mudeomundo.R;
 import com.mudeomundo.aplicativo.mudeomundo.controller.OngAdapter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -59,21 +60,20 @@ public class BuscaOngFragment extends Fragment {
         botaoBuscaNome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                novaListOng = new ArrayList<>();
                 String nomeOngBusca = nomeOng.getText().toString();
                 Log.d(TAG, "nomeOng " + nomeOng.getText().toString());
                 for (Ong ong: listOng){
-                    Log.d(TAG, "ong listOng " + ong.getNome());
-                    String nomeOngBanco = ong.getNome();
-                    if ( nomeOngBanco == nomeOngBusca){
+                    Ong novaOng = ong;
+                    if (ong.getNome().toLowerCase().equals(nomeOng.getText().toString().toLowerCase())){
                         Log.d(TAG, "entrou no if ");
-                        Ong novaOng = ong;
                         Log.d(TAG, "novaOng " + novaOng);
-                        novaListOng.add(novaOng);
-                        Log.d(TAG, "novaList " + novaListOng);
+                         novaListOng.add(novaOng);
+                       // Log.d(TAG, "novaList " + novaListOng);
                     }
-                    else{
-                        Toast.makeText(getActivity(), "Nenhuma ONG foi encontrada", Toast.LENGTH_SHORT).show();
-                    }
+                }
+                if (novaListOng == null){
+                    Toast.makeText(getActivity(), "Nenhuma Ong encontrada", Toast.LENGTH_SHORT).show();
                 }
                 ongAdapter = new OngAdapter(getActivity(), novaListOng);
                 recyclerViewOng.setAdapter(ongAdapter);

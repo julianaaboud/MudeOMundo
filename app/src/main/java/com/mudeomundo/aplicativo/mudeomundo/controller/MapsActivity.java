@@ -11,9 +11,11 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.mudeomundo.aplicativo.mudeomundo.R;
+import com.mudeomundo.aplicativo.mudeomundo.model.Acao;
 import com.mudeomundo.aplicativo.mudeomundo.model.Ong;
 
 import java.io.IOException;
@@ -26,6 +28,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private GoogleMap mMap;
     private List<Ong> listOng = Ong.getInstance().getOngList();
+    private List<Acao> listAcao = Acao.getInstance().getAcaoList();
     private Array arrayDeOng;
     private static String TAG = MapsActivity.class.getName();
 
@@ -66,7 +69,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             LatLng posicaoOngs = pegaCoordenadaDoEndereco(enderecoOng);
             Log.d(TAG, "posicao ong " + posicaoOngs);
 
-            googleMap.addMarker(new MarkerOptions().position(posicaoOngs).title(nomeOng).snippet(telefoneOng));
+            googleMap.addMarker(new MarkerOptions().position(posicaoOngs).title(nomeOng).snippet(telefoneOng).icon(BitmapDescriptorFactory.fromResource(R.drawable.voluntario)));
+        }
+        String enderecoAcao;
+        String nomeAcao;
+        for (Acao acao : listAcao){
+            enderecoAcao = acao.getEndereco() + " " + acao.getCidade();
+            nomeAcao = acao.getNome();
+            LatLng posicaoAcao = pegaCoordenadaDoEndereco(enderecoAcao);
+            googleMap.addMarker(new MarkerOptions().position(posicaoAcao).title(nomeAcao));
         }
 
         mMap = googleMap;

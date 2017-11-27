@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -23,8 +22,8 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private TextView botaoLogin;
-    private Button botaoOng;
-    private Button botaoAcao;
+   // private Button botaoOng;
+   // private Button botaoAcao;
     private List<Ong> listOng = Ong.getInstance().getOngList();
     private static String TAG = MainActivity.class.getName();
     private List<Acao> listAcao = Acao.getInstance().getAcaoList();
@@ -47,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        botaoOng = (Button) findViewById(R.id.buttonOngId);
+      /*  botaoOng = (Button) findViewById(R.id.buttonOngId);
         botaoOng.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -65,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
                 buscaIntent.putExtra("tela", 2);
                 startActivity(buscaIntent);
             }
-        });
+        });*/
 
     }
 
