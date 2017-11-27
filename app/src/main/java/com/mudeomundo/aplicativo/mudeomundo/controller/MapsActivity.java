@@ -1,10 +1,19 @@
 package com.mudeomundo.aplicativo.mudeomundo.controller;
 
+import android.Manifest;
+import android.content.Context;
+import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -31,18 +40,96 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private List<Acao> listAcao = Acao.getInstance().getAcaoList();
     private Array arrayDeOng;
     private static String TAG = MapsActivity.class.getName();
+    private Location currentLocation = null;
+    private LocationManager locationManager;
+    private Location loc;
+
+  private LocationListener locationListener =
+            new LocationListener() {
+                @Override
+                public void onLocationChanged(Location location) {
+                    currentLocation = location;
+
+                }
+
+                 @Override
+                public void onStatusChanged(String provider, int status,
+                                            Bundle extras) {
+                }
+
+                @Override
+                public void onProviderEnabled(String provider) {
+                }
+
+                @Override
+                public void onProviderDisabled(String provider) {
+                }
+            };
+
+    /* private void drawMarker(Location location) {
+        if (mMap != null) {
+            mMap.clear();
+            LatLng gps = new LatLng(location.getLatitude(), location.getLongitude());
+            mMap.addMarker(new MarkerOptions()
+                    .position(gps)
+                    .title("Current Position"));
+            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(gps, 12));
+        }
+
+    }*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
 
+        //loc = new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude());
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(map);
         mapFragment.getMapAsync(this);
 
+        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+
     }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[]
+            permissions, @NonNull int[] grantResults) {
+        switch (requestCode) {
+            case REQUEST_GPS:
+                if (grantResults.length > 0 && grantResults[0] ==
+                        PackageManager.PERMISSION_GRANTED) {
+                    if (ActivityCompat.checkSelfPermission(this,
+                            Manifest.permission.ACCESS_FINE_LOCATION) ==
+                            PackageManager.PERMISSION_GRANTED) {locationManager.requestLocationUpdates
+                            (LocationManager.GPS_PROVIDER, 0, 0, locationListener);
+                    }
+                }
+                break;
+        }
+    }
+
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        //verifica se a permissão ainda não foi concedida pelo usuário
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            //verifica se deve-se exibir uma explicação sobre a necessidade da permissão
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                    Manifest.permission.ACCESS_FINE_LOCATION)) {
+                Toast.makeText(this, "Para exibir coordenadas o app precisa do GPS",
+                        Toast.LENGTH_SHORT).show();
+            }
+            //pede permissão
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_GPS);
+        } else {
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
+        }
+    }
+
+    private static final int REQUEST_GPS = 1000;
 
   /*  private GoogleMap.OnMyLocationChangeListener myLocationChangeListener = new GoogleMap.OnMyLocationChangeListener() {
         @Override
@@ -73,7 +160,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
         String enderecoAcao;
         String nomeAcao;
-        for (Acao acao : listAcao){
+        for (Acao acao : listAcao) {
             enderecoAcao = acao.getEndereco() + " " + acao.getCidade();
             nomeAcao = acao.getNome();
             LatLng posicaoAcao = pegaCoordenadaDoEndereco(enderecoAcao);
