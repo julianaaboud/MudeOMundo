@@ -59,6 +59,7 @@ public class AcaoAdapter extends RecyclerView.Adapter {
     public void setAcaoViewHolder(AcaoViewHolder acaoViewHolder, int position) {
         Acao acao = listAcao.get(position);
         acaoViewHolder.setNome(acao.getNome());
+        acaoViewHolder.setData(acao.getData());
         acaoViewHolder.setEmail(acao.getEmail());
         acaoViewHolder.setCep(acao.getCep());
         acaoViewHolder.setCidade(acao.getCidade());

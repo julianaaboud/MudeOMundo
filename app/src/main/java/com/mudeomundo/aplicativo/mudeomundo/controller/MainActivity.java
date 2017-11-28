@@ -152,7 +152,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-                    Log.d(TAG, "DataSnapshot postSnapshot: " + postSnapshot);
+                    Log.d(TAG, "DataSnapshot ação: " + postSnapshot);
                     Acao acao = postSnapshot.getValue(Acao.class);
                     listAcao.add(acao);
                 }
