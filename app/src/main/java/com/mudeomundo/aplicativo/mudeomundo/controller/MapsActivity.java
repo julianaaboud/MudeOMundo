@@ -156,7 +156,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             LatLng posicaoOngs = pegaCoordenadaDoEndereco(enderecoOng);
             Log.d(TAG, "posicao ong " + posicaoOngs);
 
-            googleMap.addMarker(new MarkerOptions().position(posicaoOngs).title(nomeOng).snippet(telefoneOng).icon(BitmapDescriptorFactory.fromResource(R.drawable.voluntario)));
+            googleMap.addMarker(new MarkerOptions().position(posicaoOngs).title(nomeOng).snippet(telefoneOng).icon(BitmapDescriptorFactory.defaultMarker()));
         }
         String enderecoAcao;
         String nomeAcao;
@@ -164,7 +164,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             enderecoAcao = acao.getEndereco() + " " + acao.getCidade();
             nomeAcao = acao.getNome();
             LatLng posicaoAcao = pegaCoordenadaDoEndereco(enderecoAcao);
-            googleMap.addMarker(new MarkerOptions().position(posicaoAcao).title(nomeAcao));
+            googleMap.addMarker(new MarkerOptions().position(posicaoAcao).title(nomeAcao).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
         }
 
         mMap = googleMap;

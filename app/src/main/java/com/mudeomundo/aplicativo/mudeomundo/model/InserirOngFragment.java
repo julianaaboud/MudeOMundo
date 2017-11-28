@@ -9,8 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.mudeomundo.aplicativo.mudeomundo.R;
+import com.mudeomundo.aplicativo.mudeomundo.controller.Validacao;
 
 public class InserirOngFragment extends Fragment {
 
@@ -71,8 +73,15 @@ public class InserirOngFragment extends Fragment {
     }
 
     private void cadastrarOng(){
-        ong.salvar(getActivity());
-       // Log.d(TAG, "cadastrarOng");
+        if (Validacao.isCNPJ(ong.getCnpj())) {
+            ong.salvar(getActivity());
+           // Log.d(TAG, "cnpj valido");
+        }
+        else{
+            Toast.makeText(getActivity(), "CNPJ Inválido", Toast.LENGTH_LONG).show();
+          //  Log.d(TAG, "cnpj inválido");
+        }
+
     }
 
     @Override

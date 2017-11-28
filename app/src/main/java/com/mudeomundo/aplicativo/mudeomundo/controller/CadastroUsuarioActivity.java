@@ -27,6 +27,7 @@ public class CadastroUsuarioActivity extends AppCompatActivity{
     private EditText nome;
     private EditText dt_nasc;
     private EditText cep;
+    private EditText endereco;
     private EditText cidade;
     private EditText estado;
     private EditText telefone;
@@ -63,6 +64,7 @@ public class CadastroUsuarioActivity extends AppCompatActivity{
         nome = (EditText) findViewById(R.id.nomeId);
         dt_nasc = (EditText) findViewById(R.id.dtNascId);
         cep = (EditText) findViewById(R.id.cepId);
+        endereco = (EditText) findViewById(R.id.enderecoId);
         cidade = (EditText) findViewById(R.id.cidadeId);
         estado = (EditText) findViewById(R.id.estadoId);
         telefone = (EditText) findViewById(R.id.telefoneId);
@@ -110,6 +112,7 @@ public class CadastroUsuarioActivity extends AppCompatActivity{
             public void onClick(View v) {
                 usuario = new Usuario();
                 usuario.setNome(nome.getText().toString());
+                usuario.setEndereço(endereco.getText().toString());
                 usuario.setDt_nasc(dt_nasc.getText().toString());
                 usuario.setCep(cep.getText().toString());
                 usuario.setCidade(cidade.getText().toString());
