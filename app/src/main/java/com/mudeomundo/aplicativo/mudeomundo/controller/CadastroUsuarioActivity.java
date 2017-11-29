@@ -3,6 +3,7 @@ package com.mudeomundo.aplicativo.mudeomundo.controller;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -33,6 +34,7 @@ public class CadastroUsuarioActivity extends AppCompatActivity{
     private EditText telefone;
     private EditText email;
     private EditText senha;
+    private String sexo;
     private RadioButton sexofem;
     private RadioButton sexomasc;
     private TextView botaoCadastrar;
@@ -54,7 +56,7 @@ public class CadastroUsuarioActivity extends AppCompatActivity{
     private boolean isFem = false;
     private boolean isOther = false;
 
-    private String sexo;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,7 +84,9 @@ public class CadastroUsuarioActivity extends AppCompatActivity{
         cegueira = (CheckBox) findViewById(R.id.cegueiraId);
         paralisiaCerebral = (CheckBox) findViewById(R.id.paralisiaCerebralId);
 
-        sexofem.setOnClickListener(new View.OnClickListener() {
+
+
+   /*     sexofem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 sexo = sexofem.getText().toString();
@@ -96,17 +100,7 @@ public class CadastroUsuarioActivity extends AppCompatActivity{
                 sexo = sexomasc.getText().toString();
             }
         });
-
-
-
-        /*sexOther.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                isOther = true;
-                  sexo = sexoOther.getText().toString();
-            }
-        });*/
-
+*/
         botaoCadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -120,14 +114,16 @@ public class CadastroUsuarioActivity extends AppCompatActivity{
                 usuario.setTelefone(telefone.getText().toString());
                 usuario.setEmail(email.getText().toString());
                 usuario.setSenha(senha.getText().toString());
+                sexo = (sexofem).isChecked()? "feminino": "masculino";
+                Log.d(TAG, "sexo" + sexo);
                 usuario.setSexo(sexo);
-
 
                 cadastrarUsuario();
             }
         });
 
     }
+
 
 
     public void onCheckboxClicked(View view) {

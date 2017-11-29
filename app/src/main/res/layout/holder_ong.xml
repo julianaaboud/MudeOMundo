@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -39,16 +38,14 @@
                         android:layout_width="80dp"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-medium"
-                        android:text="Nome: "
+                        android:text="@string/nome"
                         android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/textViewRecyclerNome"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:ellipsize="end"
                         android:fontFamily="sans-serif-medium"
-                        android:maxLines="1"
                         android:textSize="16sp"
                         tools:text="Catland" />
 
@@ -67,7 +64,7 @@
                         android:layout_width="80dp"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-medium"
-                        android:text="Telefone: " />
+                        android:text="@string/telefone" />
 
 
                     <TextView
@@ -92,7 +89,7 @@
                         android:layout_width="80dp"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-medium"
-                        android:text="Endereço: " />
+                        android:text="@string/endereco" />
 
                     <TextView
                         android:id="@+id/textViewRecyclerEndereco"
@@ -116,7 +113,7 @@
                         android:layout_width="80dp"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-medium"
-                        android:text="Cidade: " />
+                        android:text="@string/cidade" />
 
                     <TextView
                         android:id="@+id/textViewRecyclerCidade"
@@ -140,7 +137,7 @@
                         android:layout_width="80dp"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-medium"
-                        android:text="Estado: " />
+                        android:text="@string/estado" />
 
                     <TextView
                         android:id="@+id/textViewRecyclerEstado"
@@ -164,7 +161,7 @@
                         android:layout_width="80dp"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-medium"
-                        android:text="CEP: " />
+                        android:text="@string/cep" />
 
                     <TextView
                         android:id="@+id/textViewRecyclerCep"
@@ -188,7 +185,7 @@
                         android:layout_width="80dp"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-medium"
-                        android:text="CNPJ: " />
+                        android:text="@string/cnpj" />
 
                     <TextView
                         android:id="@+id/textViewRecyclerCnpj"
@@ -212,7 +209,7 @@
                         android:layout_width="80dp"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-medium"
-                        android:text="E-mail: " />
+                        android:text="@string/email" />
 
                     <TextView
                         android:id="@+id/textViewRecyclerEmail"
@@ -242,7 +239,7 @@
                         android:layout_width="80dp"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-medium"
-                        android:text="Propósito: " />
+                        android:text="@string/proposito" />
 
                     <TextView
                         android:id="@+id/textViewRecyclerProposito"
