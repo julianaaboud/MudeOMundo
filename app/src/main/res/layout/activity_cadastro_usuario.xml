@@ -142,12 +142,6 @@
                         android:layout_height="wrap_content"
                         android:text="@string/masculino" />
 
-                    <RadioButton
-                        android:id="@+id/outroId"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/outro" />
-
                 </RadioGroup>
 
             </LinearLayout>

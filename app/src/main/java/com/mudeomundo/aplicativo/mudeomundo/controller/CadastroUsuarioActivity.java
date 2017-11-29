@@ -3,7 +3,6 @@ package com.mudeomundo.aplicativo.mudeomundo.controller;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -36,7 +35,6 @@ public class CadastroUsuarioActivity extends AppCompatActivity{
     private EditText senha;
     private String sexo;
     private RadioButton sexofem;
-    private RadioButton sexomasc;
     private TextView botaoCadastrar;
     private Usuario usuario;
     private CheckBox animal;
@@ -48,15 +46,8 @@ public class CadastroUsuarioActivity extends AppCompatActivity{
     private CheckBox cegueira;
     private CheckBox paralisiaCerebral;
 
-
     private static final String TAG = CadastroUsuarioActivity.class.getName();
     private FirebaseAuth autenticacao;
-
-    private boolean isMasc = false;
-    private boolean isFem = false;
-    private boolean isOther = false;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,7 +64,6 @@ public class CadastroUsuarioActivity extends AppCompatActivity{
         email = (EditText) findViewById(R.id.emailId);
         senha = (EditText) findViewById(R.id.senhaId);
         sexofem = (RadioButton) findViewById(R.id.femId);
-        sexomasc = (RadioButton) findViewById(R.id.mascId);
         botaoCadastrar = (TextView) findViewById(R.id.cadastrarId);
         animal = (CheckBox) findViewById(R.id.animalId);
         crianca = (CheckBox) findViewById(R.id.criancaId);
@@ -85,22 +75,6 @@ public class CadastroUsuarioActivity extends AppCompatActivity{
         paralisiaCerebral = (CheckBox) findViewById(R.id.paralisiaCerebralId);
 
 
-
-   /*     sexofem.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                sexo = sexofem.getText().toString();
-            }
-        });
-
-        sexomasc.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                sexo = sexomasc.getText().toString();
-            }
-        });
-*/
         botaoCadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -115,7 +89,6 @@ public class CadastroUsuarioActivity extends AppCompatActivity{
                 usuario.setEmail(email.getText().toString());
                 usuario.setSenha(senha.getText().toString());
                 sexo = (sexofem).isChecked()? "feminino": "masculino";
-                Log.d(TAG, "sexo" + sexo);
                 usuario.setSexo(sexo);
 
                 cadastrarUsuario();

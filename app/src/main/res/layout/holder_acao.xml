@@ -44,10 +44,10 @@
                     <TextView
                         android:id="@+id/textViewRecyclerAcaoNome"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-medium"
                         android:textSize="16sp"
-                        tools:text="Catland" />
+                        android:text="Catland" />
 
                 </LinearLayout>
 
