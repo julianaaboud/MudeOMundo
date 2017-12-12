@@ -44,14 +44,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private LocationManager locationManager;
     private Location loc;
 
-  private LocationListener locationListener =
+    private LocationListener locationListener =
             new LocationListener() {
                 @Override
                 public void onLocationChanged(Location location) {
                     currentLocation = location;
                 }
 
-                 @Override
+                @Override
                 public void onStatusChanged(String provider, int status,
                                             Bundle extras) {
                 }
@@ -101,8 +101,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         PackageManager.PERMISSION_GRANTED) {
                     if (ActivityCompat.checkSelfPermission(this,
                             Manifest.permission.ACCESS_FINE_LOCATION) ==
-                            PackageManager.PERMISSION_GRANTED) {locationManager.requestLocationUpdates
-                            (LocationManager.GPS_PROVIDER, 0, 0, locationListener);
+                            PackageManager.PERMISSION_GRANTED) {
+                        locationManager.requestLocationUpdates
+                                (LocationManager.GPS_PROVIDER, 0, 0, locationListener);
                     }
                 }
                 break;
@@ -155,7 +156,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             LatLng posicaoOngs = pegaCoordenadaDoEndereco(enderecoOng);
             Log.d(TAG, "posicao ong " + posicaoOngs);
 
-            googleMap.addMarker(new MarkerOptions().position(posicaoOngs).title(nomeOng).snippet(telefoneOng).icon(BitmapDescriptorFactory.defaultMarker()));
+            try {
+                googleMap.addMarker(new MarkerOptions().position(posicaoOngs).title(nomeOng).snippet(telefoneOng).icon(BitmapDescriptorFactory.defaultMarker()));
+            } catch (IllegalArgumentException ex) {
+                Toast.makeText(MapsActivity.this, "Não foi possível buscar as coordenadas.", Toast.LENGTH_SHORT).show();
+                Log.d(TAG, "IllegalArgumentException " + ex);
+                finish();
+            } catch (Exception e) {
+                Toast.makeText(MapsActivity.this, "Não foi possível buscar as coordenadas.", Toast.LENGTH_SHORT).show();
+                Log.d(TAG, "IllegalException ");
+                finish();
+            }
         }
         String enderecoAcao;
         String nomeAcao;
@@ -163,7 +174,18 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             enderecoAcao = acao.getEndereco() + " " + acao.getCidade();
             nomeAcao = acao.getNome();
             LatLng posicaoAcao = pegaCoordenadaDoEndereco(enderecoAcao);
-            googleMap.addMarker(new MarkerOptions().position(posicaoAcao).title(nomeAcao).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
+
+            try {
+                googleMap.addMarker(new MarkerOptions().position(posicaoAcao).title(nomeAcao).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
+            } catch (IllegalArgumentException ex) {
+                Toast.makeText(MapsActivity.this, "Não foi possível buscar as coordenadas.", Toast.LENGTH_SHORT).show();
+                Log.d(TAG, "IllegalArgumentException " + ex);
+                finish();
+            } catch (Exception e) {
+                Toast.makeText(MapsActivity.this, "Não foi possível buscar as coordenadas.", Toast.LENGTH_SHORT).show();
+                Log.d(TAG, "IllegalException ");
+                finish();
+            }
         }
 
         mMap = googleMap;

@@ -127,27 +127,7 @@ public class UsuarioLogadoActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         displaySelectedScreen(item.getItemId());
-        // Handle navigation view item clicks here.
-       /* int id = item.getItemId();
 
-        if (id == R.id.nav_conta) {
-         //   configurarValoresNosCamposVisuais();
-
-        } else if (id == R.id.nav_causa) {
-
-
-        } else if (id == R.id.nav_inserir) {
-
-        } else if (id == R.id.nav_avaliar) {
-
-        } else if (id == R.id.duvidas) {
-
-        } else if (id == R.id.sobre) {
-
-        }
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);*/
         return true;
     }
 
@@ -164,6 +144,7 @@ public class UsuarioLogadoActivity extends AppCompatActivity
                 break;
             case R.id.nav_causa:
                 fragment = new CausaFragment();
+                fragment.setArguments(bundle);
                 break;
             case R.id.nav_inserir_ong:
                 fragment = new InserirOngFragment();
