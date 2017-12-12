@@ -33,7 +33,6 @@ public class ProfileFragment extends Fragment {
     DatabaseReference referenceUsuario;
     private Usuario usuario;
 
-
     private static final String TAG = ProfileFragment.class.getName();
 
     @Override
@@ -43,7 +42,6 @@ public class ProfileFragment extends Fragment {
         bundle = getArguments();
         token = bundle.getString("token");
         database = FirebaseDatabase.getInstance();
-        //    referenceUsuario = database.getReference("usuario");
         referenceUsuario = ConfiguracaoFirebase.getFirebase();
 
         Log.d(TAG, "onCreateView token:" + token);
@@ -99,7 +97,7 @@ public class ProfileFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         //you can set the title for your toolbar here for different fragments different titles
-        getActivity().setTitle("Menu Profile");
+        getActivity().setTitle("Minha Conta");
 
     }
 

@@ -1,6 +1,7 @@
 package com.mudeomundo.aplicativo.mudeomundo.model;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -89,6 +90,13 @@ public class BuscaOngFragment extends Fragment {
     public void onResume() {
         super.onResume();
         ongAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        //you can set the title for your toolbar here for different fragments different titles
+        getActivity().setTitle("Lista de ONG");
     }
 
     /*    // TODO: Rename parameter arguments, choose names that match

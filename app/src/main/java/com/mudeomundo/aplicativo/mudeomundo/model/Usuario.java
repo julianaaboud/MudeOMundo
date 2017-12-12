@@ -4,6 +4,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.Exclude;
 import com.mudeomundo.aplicativo.mudeomundo.config.ConfiguracaoFirebase;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Juliana on 04/09/2017.
  */
@@ -20,6 +23,7 @@ import com.mudeomundo.aplicativo.mudeomundo.config.ConfiguracaoFirebase;
         private String email;
         private String senha;
         private String sexo;
+        private List<String> causas = new ArrayList<>();
         private static Usuario instance;
 
     public Usuario(){
@@ -126,6 +130,10 @@ import com.mudeomundo.aplicativo.mudeomundo.config.ConfiguracaoFirebase;
         this.endereco = endereço;
     }
 
+    public List<String> getCausas() { return causas; }
+
+    public void setCausas(List<String> causas) { this.causas = causas; }
+
     @Override
     public String toString() {
         return "Usuario{" +
@@ -139,6 +147,7 @@ import com.mudeomundo.aplicativo.mudeomundo.config.ConfiguracaoFirebase;
                 ", email='" + email + '\'' +
                 ", senha='" + senha + '\'' +
                 ", endereco='" + endereco + '\'' +
+                ", causas='" + causas + '\'' +
                 ", sexo='" + sexo + '\'' +
                 '}';
     }

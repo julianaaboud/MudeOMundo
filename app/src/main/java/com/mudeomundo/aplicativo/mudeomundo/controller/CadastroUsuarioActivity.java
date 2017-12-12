@@ -3,6 +3,7 @@ package com.mudeomundo.aplicativo.mudeomundo.controller;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -22,7 +23,9 @@ import com.mudeomundo.aplicativo.mudeomundo.R;
 import com.mudeomundo.aplicativo.mudeomundo.config.ConfiguracaoFirebase;
 import com.mudeomundo.aplicativo.mudeomundo.model.Usuario;
 
-public class CadastroUsuarioActivity extends AppCompatActivity{
+import java.util.ArrayList;
+
+public class CadastroUsuarioActivity extends AppCompatActivity {
 
     private EditText nome;
     private EditText dt_nasc;
@@ -37,14 +40,7 @@ public class CadastroUsuarioActivity extends AppCompatActivity{
     private RadioButton sexofem;
     private TextView botaoCadastrar;
     private Usuario usuario;
-    private CheckBox animal;
-    private CheckBox crianca;
-    private CheckBox idoso;
-    private CheckBox refugiado;
-    private CheckBox meioAmbiente;
-    private CheckBox empoderamentoFeminino;
-    private CheckBox cegueira;
-    private CheckBox paralisiaCerebral;
+    private ArrayList<String> causasList = new ArrayList<>();
 
     private static final String TAG = CadastroUsuarioActivity.class.getName();
     private FirebaseAuth autenticacao;
@@ -65,15 +61,6 @@ public class CadastroUsuarioActivity extends AppCompatActivity{
         senha = (EditText) findViewById(R.id.senhaId);
         sexofem = (RadioButton) findViewById(R.id.femId);
         botaoCadastrar = (TextView) findViewById(R.id.cadastrarId);
-        animal = (CheckBox) findViewById(R.id.animalId);
-        crianca = (CheckBox) findViewById(R.id.criancaId);
-        idoso = (CheckBox) findViewById(R.id.idosoId);
-        refugiado = (CheckBox) findViewById(R.id.refugiadoId);
-        meioAmbiente = (CheckBox) findViewById(R.id.meioAmbienteId);
-        empoderamentoFeminino = (CheckBox) findViewById(R.id.empoderamentoFemininoId);
-        cegueira = (CheckBox) findViewById(R.id.cegueiraId);
-        paralisiaCerebral = (CheckBox) findViewById(R.id.paralisiaCerebralId);
-
 
         botaoCadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,8 +75,9 @@ public class CadastroUsuarioActivity extends AppCompatActivity{
                 usuario.setTelefone(telefone.getText().toString());
                 usuario.setEmail(email.getText().toString());
                 usuario.setSenha(senha.getText().toString());
-                sexo = (sexofem).isChecked()? "feminino": "masculino";
+                sexo = (sexofem).isChecked() ? "feminino" : "masculino";
                 usuario.setSexo(sexo);
+                usuario.setCausas(causasList);
 
                 cadastrarUsuario();
             }
@@ -98,40 +86,80 @@ public class CadastroUsuarioActivity extends AppCompatActivity{
     }
 
 
-
     public void onCheckboxClicked(View view) {
-        // Is the view now checked?
+
         boolean checked = ((CheckBox) view).isChecked();
 
-        // Check which checkbox was clicked
-      /*  switch(view.getId()) {
+        switch (view.getId()) {
             case R.id.animalId:
-                if (checked){
-
+                if (checked) {
+                    causasList.add("animal");
+                } else {
+                    causasList.remove("animal");
                 }
-
-                else
-
                 break;
             case R.id.criancaId:
-                if (checked)
-                // Cheese me
-            else
-                // I'm lactose intolerant
+                if (checked) {
+                    causasList.add("crianca");
+                } else {
+                    causasList.remove("crianca");
+                }
                 break;
-            // TODO: Veggie sandwich
+            case R.id.idosoId:
+                if (checked) {
+                    causasList.add("idoso");
+                } else {
+                    causasList.remove("idoso");
+                }
+                break;
+            case R.id.refugiadoId:
+                if (checked) {
+                    causasList.add("refugiado");
+                } else {
+                    causasList.remove("refugiado");
+                }
+                break;
+            case R.id.meioAmbienteId:
+                if (checked) {
+                    causasList.add("meio ambiente");
+                } else {
+                    causasList.remove("meio ambiente");
+                }
+                break;
+            case R.id.empoderamentoFemininoId:
+                if (checked) {
+                    causasList.add("empoderamento feminino");
+                } else {
+                    causasList.remove("empoderamento feminino");
+                }
+                break;
+            case R.id.cegueiraId:
+                if (checked) {
+                    causasList.add("cegueira");
+                } else {
+                    causasList.remove("cegueira");
+                }
+                break;
+            case R.id.paralisiaCerebralId:
+                if (checked) {
+                    causasList.add("paralisia cerebral");
+                } else {
+                    causasList.remove("paralisia cerebral");
+                }
+                break;
         }
-    }*/
 
+
+        Log.d(TAG, "causas status " + causasList.toString());
     }
-    private void cadastrarUsuario(){
-        //autenticacao = referenciaFirebase
+
+    private void cadastrarUsuario() {
         autenticacao = ConfiguracaoFirebase.getFirebaseAutenticacao();
         autenticacao.createUserWithEmailAndPassword(usuario.getEmail(), usuario.getSenha()
         ).addOnCompleteListener(CadastroUsuarioActivity.this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()){
+                if (task.isSuccessful()) {
                     Toast.makeText(CadastroUsuarioActivity.this, "Sucesso ao cadastrar usuário", Toast.LENGTH_LONG).show();
 
                     FirebaseUser usuarioFirebase = task.getResult().getUser();
@@ -145,23 +173,23 @@ public class CadastroUsuarioActivity extends AppCompatActivity{
 
                     String erroExcecao = "";
 
-                    try{
+                    try {
                         throw task.getException();
-                    }catch (FirebaseAuthWeakPasswordException e){
+                    } catch (FirebaseAuthWeakPasswordException e) {
                         erroExcecao = "Digita uma senha mais forte, contendo mais caracteres e com letras e numeros!";
-                    }catch (FirebaseAuthInvalidCredentialsException e){
+                    } catch (FirebaseAuthInvalidCredentialsException e) {
                         erroExcecao = "O e-mail digitado é inválido, digite um novo e-mail!";
-                    }catch (FirebaseAuthUserCollisionException e){
+                    } catch (FirebaseAuthUserCollisionException e) {
                         erroExcecao = "Este e-mail já está em uso!";
-                    }catch (Exception e){
+                    } catch (Exception e) {
                         erroExcecao = "ao efetuar cadastro!";
-                       // e.printStackTrace();
-                  //      Log.d("CadastroUsuarioActi", "cadastrarUsuario: " + e.getMessage());
+                        // e.printStackTrace();
+                        //      Log.d("CadastroUsuarioActi", "cadastrarUsuario: " + e.getMessage());
                     }
 
                     Toast.makeText(CadastroUsuarioActivity.this, "Erro: " + erroExcecao, Toast.LENGTH_LONG).show();
 
-                //   Log.i("banco", "Erro ao cadastrar usuário" + task.getException());
+                    //   Log.i("banco", "Erro ao cadastrar usuário" + task.getException());
                 }
             }
         });

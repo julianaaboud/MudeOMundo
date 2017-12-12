@@ -176,6 +176,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center|start"
+                android:id="@+id/checkbox_container"
                 android:orientation="vertical"
                 android:padding="4dp">
 

@@ -20,11 +20,11 @@
             android:title="Inserir Ação" />
         <item
             android:id="@+id/nav_buscar_ong"
-            android:icon="@drawable/voluntario"
+            android:icon="@drawable/charity"
             android:title="Buscar Ong" />
         <item
             android:id="@+id/nav_buscar_acao"
-            android:icon="@drawable/voluntario"
+            android:icon="@drawable/avaliar"
             android:title="Buscar Ação" />
         <item
             android:id="@+id/nav_mapa"

@@ -85,36 +85,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
-
-      /*botaoLogin = (TextView) findViewById(R.id.botaoLoginId);
-        botaoLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, LoginActivity.class));
-            }
-        });*/
-
-      /*  botaoOng = (Button) findViewById(R.id.buttonOngId);
-        botaoOng.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                buscaIntent = new Intent(MainActivity.this, BuscaActivity.class);
-                buscaIntent.putExtra("tela", 1);
-                startActivity(buscaIntent);
-            }
-        });
-
-        botaoAcao = (Button) findViewById(R.id.buttonAçãoVoluntariaId);
-        botaoAcao.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                buscaIntent = new Intent(MainActivity.this, BuscaActivity.class);
-                buscaIntent.putExtra("tela", 2);
-                startActivity(buscaIntent);
-            }
-        });*/
-
     }
 
     public void abrirCadastroUsuario(View view) {

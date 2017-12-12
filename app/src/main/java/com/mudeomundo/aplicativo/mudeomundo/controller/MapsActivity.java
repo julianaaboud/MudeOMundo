@@ -49,7 +49,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 @Override
                 public void onLocationChanged(Location location) {
                     currentLocation = location;
-
                 }
 
                  @Override

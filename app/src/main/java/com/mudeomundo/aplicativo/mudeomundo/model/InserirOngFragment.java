@@ -74,14 +74,13 @@ public class InserirOngFragment extends Fragment {
 
     private void cadastrarOng(){
         if (Validacao.isCNPJ(ong.getCnpj())) {
-            ong.salvar(getActivity());
+            ong.salvar(getActivity(), ong);
            // Log.d(TAG, "cnpj valido");
         }
         else{
             Toast.makeText(getActivity(), "CNPJ Inválido", Toast.LENGTH_LONG).show();
           //  Log.d(TAG, "cnpj inválido");
         }
-
     }
 
     @Override
@@ -89,7 +88,6 @@ public class InserirOngFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         //you can set the title for your toolbar here for different fragments different titles
         getActivity().setTitle("Inserir Ong");
-
 
     }
 

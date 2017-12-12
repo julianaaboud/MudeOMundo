@@ -2,14 +2,86 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Menu Causa"
-        android:id="@+id/textView"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:gravity="center"
+        android:layout_centerInParent="true"
+        android:id="@+id/checkbox_container"
+        android:orientation="vertical"
+        android:padding="30dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/causas"
+            android:textSize="18sp" />
+
+        <CheckBox
+            android:id="@+id/animalCausaId"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:onClick="onCheckboxClicked"
+            android:padding="4dp"
+            android:text="@string/animal" />
+
+        <CheckBox
+            android:id="@+id/criancaCausaId"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:onClick="onCheckboxClicked"
+            android:padding="4dp"
+            android:text="@string/crianca" />
+
+        <CheckBox
+            android:id="@+id/idosoCausaId"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:onClick="onCheckboxClicked"
+            android:padding="4dp"
+            android:text="@string/idoso" />
+
+        <CheckBox
+            android:id="@+id/refugiadoCausaId"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:onClick="onCheckboxClicked"
+            android:padding="4dp"
+            android:text="@string/refugiado" />
+
+        <CheckBox
+            android:id="@+id/meioAmbienteCausaId"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:onClick="onCheckboxClicked"
+            android:padding="4dp"
+            android:text="@string/meioAmbiente" />
+
+        <CheckBox
+            android:id="@+id/empoderamentoFemininoCausaId"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:onClick="onCheckboxClicked"
+            android:padding="4dp"
+            android:text="@string/empoderamentoFeminino" />
+
+        <CheckBox
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="4dp"
+            android:text="Cegueira"
+            android:id="@+id/cegueiraCausaId"
+            android:onClick="onCheckboxClicked"/>
+
+        <CheckBox
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="4dp"
+            android:text="Paralisia Cerebral"
+            android:id="@+id/paralisiaCerebralCausaId"
+            android:onClick="onCheckboxClicked"/>
+
+    </LinearLayout>
 
 </RelativeLayout>

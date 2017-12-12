@@ -12,8 +12,6 @@ import com.mudeomundo.aplicativo.mudeomundo.config.ConfiguracaoFirebase;
 import java.util.ArrayList;
 import java.util.List;
 
-import static android.R.attr.key;
-
 /**
  * Created by Juliana on 11/10/2017.
  */
@@ -37,7 +35,7 @@ public class Ong {
 
     }
 
-    public void salvar(final Context context){
+    public void salvar(final Context context, final Ong ong){
         Log.d(TAG, "cadastrarOng salvar");
         DatabaseReference referenciaFirebase = ConfiguracaoFirebase.getFirebase();
         referenciaFirebase = referenciaFirebase.child("ong").push();
@@ -45,11 +43,10 @@ public class Ong {
             @Override
             public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
                 Toast.makeText(context, "Sucesso ao cadastrar ONG", Toast.LENGTH_LONG).show();
+                getOngList().add(ong);
             }
         });
-
-
-        Log.d (TAG, "log de teste " + key);
+        //Log.d (TAG, "log de teste " + key);
     }
     @Exclude
     public static Ong getInstance (){
