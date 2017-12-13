@@ -161,14 +161,12 @@ public class InserirOngFragment extends Fragment implements View.OnClickListener
         }
     }
 
-    public void onCheckboxClickedOng(View view) {
-
-
-    }
 
     private void cadastrarOng(){
         if (Validacao.isCNPJ(ong.getCnpj())) {
             ong.salvar(getActivity(), ong);
+
+
            // Log.d(TAG, "cnpj valido");
         }
         else{

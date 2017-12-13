@@ -32,7 +32,6 @@ public class BuscaAcaoActivity extends AppCompatActivity {
         //Setando Geranciador de Layout
         acaoLayoutManager = new LinearLayoutManager(this);
         recyclerViewAcao.setLayoutManager(acaoLayoutManager);
-
     }
 
     @Override

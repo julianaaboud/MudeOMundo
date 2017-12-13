@@ -71,31 +71,31 @@ public class CausaFragment extends Fragment {
                         case "animal":
                             animal.setChecked(true);
                             break;
+                        case "crianca":
+                            crianca.setChecked(true);
+                            break;
+                        case "idoso":
+                            idoso.setChecked(true);
+                            break;
                         case "meio ambiente":
                             meioAmbiente.setChecked(true);
                             break;
-                        //TODO:Continuar para as demais causas
+                        case "empoderamento feminino":
+                            empoderamentoFeminino.setChecked(true);
+                            break;
+                        case "refugiado":
+                            refugiado.setChecked(true);
+                            break;
+                        case "cegueira":
+                            cegueira.setChecked(true);
+                            break;
+                        case "paralisia cerebral":
+                            paralisiaCerebral.setChecked(true);
+                            break;
                     }
 
                 }
-
                 Log.d(TAG, "Causas " + causasList.toString());
-/*
-                    for (DataSnapshot user: userChildren){
-                        if(user.getKey().equals(token)){
-                            String key = user.getValue().toString();
-                            Log.d(TAG, "onDataChange key: " + key);
-
-                            usuario = user.getValue(Usuario.class);
-                            Log.d(TAG, "onDataChange key: " + usuario.getCausas());
-                            causasList = (ArrayList<String>) usuario.getCausas();
-                            animal.setChecked(true);
-
-                        }
-                    }
-*/
-                //}
-
             }
 
             @Override

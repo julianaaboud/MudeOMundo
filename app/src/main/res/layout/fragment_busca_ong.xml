@@ -16,7 +16,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:ellipsize="end"
-            android:hint="Buscar Ong"
+            android:hint="@string/buscar_ong"
             android:maxLines="1"
             android:padding="4dp"
             android:id="@+id/editTextBuscaNomeIdFragment"/>
@@ -27,6 +27,7 @@
             android:layout_height="60dp"
             android:layout_weight="3"
             android:gravity="center"
+            android:background="@drawable/button_shape"
             android:text="@string/busca_nome" />
     </LinearLayout>
 

@@ -49,5 +49,6 @@
     <string name="endereco">Endereço:</string>
     <string name="proposito">Propósito:</string>
     <string name="cnpj">CNPJ:</string>
+    <string name="buscar_ong">Busque por nome ou causa</string>
 
 </resources>

@@ -88,7 +88,7 @@
         android:layout_marginBottom="30dp"
         android:hint="@string/email"
         android:inputType="text"
-        android:text="juli@juli.com"
+        android:text="juliana.aboud@gmail.com"
         android:textColor="@color/colorPrimaryDark" />
 
 </RelativeLayout>

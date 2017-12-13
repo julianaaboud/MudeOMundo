@@ -41,7 +41,6 @@ public class Acao {
             @Override
             public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
                 Toast.makeText(context, "Sucesso ao cadastrar Ação", Toast.LENGTH_LONG).show();
-
             }
         });
 

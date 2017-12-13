@@ -66,10 +66,7 @@ public class BuscaOngFragment extends Fragment {
                 Log.d(TAG, "nomeOng " + nomeOng.getText().toString());
                 for (Ong ong: listOng){
                     Ong novaOng = ong;
-                    if (ong.getNomeCausa().toLowerCase().contains(nomeOng.getText().toString().toLowerCase())){
-                        Log.d(TAG, "entrou no if ");
-                        Log.d(TAG, "novaOng " + novaOng);
-                        Log.d(TAG, "nomeCausa " + ong.getNomeCausa().toLowerCase());
+                    if (ong.getNomeCausa().toLowerCase().contains(nomeOng.getText().toString().toLowerCase().trim())){
                          novaListOng.add(novaOng);
                        // Log.d(TAG, "novaList " + novaListOng);
                     }

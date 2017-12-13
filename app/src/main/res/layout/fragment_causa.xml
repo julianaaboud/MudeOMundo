@@ -5,18 +5,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_centerInParent="true"
         android:id="@+id/checkbox_container"
         android:orientation="vertical"
         android:padding="30dp">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/causas"
-            android:textSize="18sp" />
 
         <CheckBox
             android:id="@+id/animalCausaId"
