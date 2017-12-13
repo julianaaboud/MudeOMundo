@@ -26,6 +26,8 @@ public class Ong {
     private String proposito;
     private String email;
     private String telefone;
+    private String nomeCausa;
+    private List<String> causas = new ArrayList<>();
     private boolean status;
     private static Ong instance;
     private static List<Ong> ongList = new ArrayList<>();
@@ -134,6 +136,15 @@ public class Ong {
 
     public void setCnpj(String cnpj) { this.cnpj = cnpj; }
 
+    public List<String> getCausas() { return causas; }
+
+    public void setCausas(List<String> causas) { this.causas = causas; }
+
+    public String getNomeCausa() {
+        return this.nomeCausa = nome + " " + causas.toString() + " " + proposito;
+    }
+
+
     @Override
     public String toString() {
         return "Ong{" +
@@ -145,6 +156,7 @@ public class Ong {
                 ", estado='" + estado + '\'' +
                 ", proposito='" + proposito + '\'' +
                 ", email='" + email + '\'' +
+                ", causas='" + causas + '\'' +
                 ", telefone='" + telefone + '\'' +
                 '}';
     }

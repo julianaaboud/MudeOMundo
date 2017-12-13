@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -14,7 +15,9 @@ import android.widget.Toast;
 import com.mudeomundo.aplicativo.mudeomundo.R;
 import com.mudeomundo.aplicativo.mudeomundo.controller.Validacao;
 
-public class InserirOngFragment extends Fragment {
+import java.util.ArrayList;
+
+public class InserirOngFragment extends Fragment implements View.OnClickListener{
 
     private EditText nome;
     private EditText endereco;
@@ -28,6 +31,9 @@ public class InserirOngFragment extends Fragment {
     private boolean status;
     private TextView botaoCadastrarOng;
     private Ong ong;
+    private CheckBox animal, crianca, idoso, meioAmbiente, refugiado, cegueira, paralisiaCerebral, empoderamentoFeminino;
+    private ArrayList<String> causasList = new ArrayList<>();
+
     private static String TAG = InserirOngFragment.class.getName();
    // private DatabaseReference referenciaFirebase = ConfiguracaoFirebase.getFirebase();
 
@@ -51,6 +57,24 @@ public class InserirOngFragment extends Fragment {
         endereco = (EditText) rootView.findViewById(R.id.enderecoOngId);
         proposito = (EditText) rootView.findViewById(R.id.propositoOngId);
         botaoCadastrarOng = (TextView) rootView.findViewById(R.id.cadastrarOngId);
+        animal = (CheckBox) rootView.findViewById(R.id.animalOngId);
+        crianca = (CheckBox) rootView.findViewById(R.id.criancaOngId);
+        idoso = (CheckBox) rootView.findViewById(R.id.idosoOngId);
+        meioAmbiente = (CheckBox) rootView.findViewById(R.id.meioAmbienteOngId);
+        refugiado = (CheckBox) rootView.findViewById(R.id.refugiadoOngId);
+        cegueira = (CheckBox) rootView.findViewById(R.id.cegueiraOngId);
+        paralisiaCerebral = (CheckBox) rootView.findViewById(R.id.paralisiaCerebralOngId);
+        empoderamentoFeminino = (CheckBox) rootView.findViewById(R.id.empoderamentoFemininoOngId);
+
+        animal.setOnClickListener(this);
+        crianca.setOnClickListener(this);
+        idoso.setOnClickListener(this);
+        meioAmbiente.setOnClickListener(this);
+        refugiado.setOnClickListener(this);
+        cegueira.setOnClickListener(this);
+        paralisiaCerebral.setOnClickListener(this);
+        empoderamentoFeminino.setOnClickListener(this);
+
 
         botaoCadastrarOng.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,11 +89,81 @@ public class InserirOngFragment extends Fragment {
                 ong.setEmail(email.getText().toString());
                 ong.setProposito(proposito.getText().toString());
                 ong.setCnpj(cnpj.getText().toString());
+                ong.setCausas(causasList);
                 cadastrarOng();
                 Log.d(TAG, "onCreateView");
             }
         });
         return rootView;
+    }
+
+    @Override
+    public void onClick(View view) {
+        boolean checked = ((CheckBox) view).isChecked();
+
+        switch (view.getId()) {
+            case R.id.animalOngId:
+                if (checked) {
+                    causasList.add("animal");
+                } else {
+                    causasList.remove("animal");
+                }
+                break;
+            case R.id.criancaOngId:
+                if (checked) {
+                    causasList.add("crianca");
+                } else {
+                    causasList.remove("crianca");
+                }
+                break;
+            case R.id.idosoOngId:
+                if (checked) {
+                    causasList.add("idoso");
+                } else {
+                    causasList.remove("idoso");
+                }
+                break;
+            case R.id.refugiadoOngId:
+                if (checked) {
+                    causasList.add("refugiado");
+                } else {
+                    causasList.remove("refugiado");
+                }
+                break;
+            case R.id.meioAmbienteOngId:
+                if (checked) {
+                    causasList.add("meio ambiente");
+                } else {
+                    causasList.remove("meio ambiente");
+                }
+                break;
+            case R.id.empoderamentoFemininoOngId:
+                if (checked) {
+                    causasList.add("empoderamento feminino");
+                } else {
+                    causasList.remove("empoderamento feminino");
+                }
+                break;
+            case R.id.cegueiraOngId:
+                if (checked) {
+                    causasList.add("cegueira");
+                } else {
+                    causasList.remove("cegueira");
+                }
+                break;
+            case R.id.paralisiaCerebralOngId:
+                if (checked) {
+                    causasList.add("paralisia cerebral");
+                } else {
+                    causasList.remove("paralisia cerebral");
+                }
+                break;
+        }
+    }
+
+    public void onCheckboxClickedOng(View view) {
+
+
     }
 
     private void cadastrarOng(){

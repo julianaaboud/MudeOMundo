@@ -24,7 +24,7 @@ public class BuscaOngActivity extends AppCompatActivity {
     private static String TAG = BuscaOngActivity.class.getName();
     private List<Ong> listOng;
     private RecyclerView recyclerViewOng;
-   // private RecyclerView.Adapter mAdapter;
+    // private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager ongLayoutManager;
     private OngAdapter ongAdapter;
 
@@ -58,80 +58,16 @@ public class BuscaOngActivity extends AppCompatActivity {
         botaoBuscaNome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-             //   buscaListaDeOngs();
+                //   buscaListaDeOngs();
             }
         });
     }
 
     @Override
-    protected void onResume(){
+    protected void onResume() {
         super.onResume();
         ongAdapter.notifyDataSetChanged();
     }
 
-  /*  public void buscaListaDeOngs() {
-        //Busca no Firebase
-        final DatabaseReference referenciaFirebase = ConfiguracaoFirebase.getFirebase();
-        Query buscaQuery = referenciaFirebase.child("ong");
-
-        //Snapshot
-        buscaQuery.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-                    //Query ongQuery = referenciaFirebase.child("ong").orderByChild("nome").limitToFirst(10);
-                    //Log.d(TAG, "DataSnapshot ongQuery: " + ongQuery);
-                    //String name = (String) postSnapshot.child("nome").getValue();
-                    //Log.d(TAG, "DataSnapshot name: " + name);
-                    Ong ong = postSnapshot.getValue(Ong.class);
-                    listOng.add(ong);
-                }
-
-            }
-
-            *//*   for (DataSnapshot postSnapshot: dataSnapshot.getChildren()){
-                   Log.d(TAG, "DataSnapshot nome digitado: " + nomeOng.getText());
-
-                if (ong.getNome().equals(nomeOng.getText().toString())) {
-                    Log.d(TAG, "DataSnapshot ACHOU A ONG: " + ong.getNome());
-
-                }*//*
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                Log.d(TAG, "loadPost:onCancelled", databaseError.toException());
-            }
-        });
-
-    }*/
-
-    //Criando o adapter
-    //ArrayAdapter<Ong> adaptador = new ArrayAdapter<Ong>(this, simple_list_item_1, arrayDeOng);
-
-    //Vinculando o adaptador ao listview
-    //listaOng.setAdapter(adaptador);
-
 }
-
-        /*       buscaQuery.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-                    Log.d(TAG, "DataSnapshot: " + postSnapshot.getKey());
-
-                     Ong ong = postSnapshot.getValue(Ong.class);
-                    arrayDeOng.add(ong);
-                    Log.d(TAG, "DataSnapshot ongModel data: " + ong.getNome());
-
-                    if (ong.getNome().equals(nomeOng.getText().toString())) {
-                        Log.d(TAG, "DataSnapshot ACHOU A ONG: " + ong.getNome());
-                        arrayDeOng.add(ong);
-                        return;
-                    }
-                }
-            }
-*/
-
-
-
-
 
